@@ -1,0 +1,33 @@
+package com.example.demo;
+
+import com.example.demo.model.Book;
+
+public class BookRepository implements Repository {
+
+	
+	
+	@Override
+	public boolean save(Book book) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Book[] findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean remove(Book book) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Book findByName(String bookName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

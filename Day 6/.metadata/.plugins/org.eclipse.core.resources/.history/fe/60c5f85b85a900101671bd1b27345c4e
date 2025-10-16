@@ -1,0 +1,89 @@
+package com.example.demo;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Comparator;
+import java.util.List;
+import java.util.function.BiConsumer;
+
+import static java.util.stream.Collectors.toList;
+public class Application {
+	
+	public static void sortByLocationAndDate(List<LogMessages> list) {
+		print(list.stream()
+				.sorted(Comparator.comparing(LogMessages::getLocation))
+				.collect(toList()));
+	}
+	
+	public static void sortBySeverity(List<LogMessages> list) {
+		print(list.stream()
+				.sorted(Comparator.comparing(LogMessages::getSeverity))
+				.collect(toList()));
+	}
+
+	public static void sortByDateAndCause(List<LogMessages> list) {
+		print(list.stream()
+				.sorted(Comparator.comparing(LogMessages::getDateTime)
+						.thenComparing(LogMessages::getCause))
+				.collect(toList()));
+	}
+	
+	public static void getHighSeverity(List<LogMessages> list) {
+		print(list.stream()
+				.filter(e -> e.getSeverity().equals(Severity.HIGH))
+				.collect(toList()));
+	}
+	
+	public static void print(List<LogMessages> list) {
+		list.forEach(System.out::println);
+	}
+	
+	public static void main(String[] args) {
+
+		String filePath = "D:\\Bajaj\\Traning\\Day 6\\data.csv";
+        String line;
+        List<LogMessages> list = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        
+        
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                int id = Integer.parseInt(values[0]);
+                LocalDateTime dateTime = LocalDateTime.parse(values[1], formatter);
+            	String location = values[2];
+            	Severity severity = Severity.valueOf(values[3]);
+            	String cause = values[4];
+                LogMessages message = new LogMessages(id, dateTime, location, severity, cause);
+                list.add(message);
+//                System.out.println(message);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+//        System.out.println("****************By Location And Date**************");
+//        sortByLocationAndDate(list);
+        
+//        System.out.println("****************By Severity**************");
+//        sortBySeverity(list);
+        
+//        System.out.println("****************By Date And Cause**************");
+//        sortByDateAndCause(list);
+        
+//        System.out.println("****************High Severity**************");
+//        getHighSeverity(list);
+        
+        BiConsumer<String, String> f = (t,u) -> System.out.println(t.toUpperCase() + u.toUpperCase());
+        
+        BiConsumer<String, String> s = (t,u) -> System.out.println(t.toLowerCase() + "2");
+        
+        f.andThen(s).accept("After", "and again");
+        
+	}
+
+}

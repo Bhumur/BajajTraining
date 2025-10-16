@@ -1,0 +1,69 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.TreeSet;
+
+import com.example.demo.module.three.Employee;
+import com.example.demo.module.three.EmployeeUtils;
+
+public class OtherCollectionClasses {
+
+	public static void usingHashSet(Collection<Employee> empList) {
+		HashSet<Employee> empSet = new HashSet<>();
+		empSet.add(new Employee(1070, "Abhijeet", "Ratnagiri", 890020));
+		
+		empSet.addAll(empList);
+		print(empSet);
+	}
+
+	private static void print(Collection<Employee> collection) {
+		for(Employee emp : collection) {
+			System.out.println(emp);
+		}
+	}
+	
+	public static void usingTreeSet(Collection<Employee> empList) {
+		TreeSet<Employee> empSet = new TreeSet<>(EmployeeUtils.comparatorFactory(2));
+		System.out.println(empSet.add(new Employee(1070, "Abhijeet", "Ratnagiri", 890020)));
+		System.out.println(empSet.add(new Employee(1070, "Abhijeet", "Ratnagiri", 890020)));
+
+		empSet.addAll(empList);
+		print(empSet);
+	}
+	
+	public static Map<Integer, Employee> usingHashMap() {
+		HashMap<Integer, Employee> empMap = new HashMap<>();
+		
+		System.out.println("Added => " + empMap.put(89, new Employee(1070, "Abhijeet", "Ratnagiri", 890020)));
+		System.out.println("Added => " + empMap.put(90, new Employee(1060, "HareRam", "Ratnagiri", 890020)));
+		System.out.println("Added => " + empMap.put(91, new Employee(1070, "PagalAdmin", "Ratnagiri", 890020)));
+		
+//		print(empMap.);
+	}
+	
+	public static void iteratingMap() {
+		
+		
+	}
+	
+	public static Collection<Employee> init(){
+		return Arrays.asList(new Employee(1010, "Bhumur", "Jaipur", 890020),
+				new Employee(1020, "Sarvesh", "Nagpur", 116962),
+				new Employee(1030, "Abhishek", "Lohagad", 890),
+				new Employee(1040, "Chetan", "Pune", 5920),
+				new Employee(1050, "Shoyeb", "Barmati", 205416),
+				new Employee(1060, "Kushal", "Shambaji", 186620),
+				new Employee(1070, "Abhijeet", "Ratnagiri", 890020));
+	}
+	
+	public static void main(String []args) {
+		
+//		usingHashSet(init());
+//		usingTreeSet(init());
+		iteratingMap();
+	}
+}

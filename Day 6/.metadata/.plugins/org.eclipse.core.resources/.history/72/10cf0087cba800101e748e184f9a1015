@@ -1,0 +1,66 @@
+package com.example.demo;
+
+import java.time.LocalDate;
+
+import com.example.demo.ifaces.Product;
+import com.example.demo.ifaces.Taxable;
+
+public class MultiImplementOne implements Product, Taxable {
+
+	@Override
+	public LocalDate getLastDate() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String showInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String discount() {
+		// TODO Auto-generated method stub
+		return "15%";
+//		return Product.super.discount();
+	}
+
+}
+class MultiImplementTwo implements Product, Taxable {
+
+	@Override
+	public LocalDate getLastDate() {
+		return null;
+	}
+
+	@Override
+	public String showInfo() {
+		return null;
+	}
+
+	@Override
+	public String discount() {
+		return Taxable.super.discount();
+	}
+
+}
+
+class MultiImplementThree implements Product, Taxable {
+
+	@Override
+	public LocalDate getLastDate() {
+		return null;
+	}
+
+	@Override
+	public String showInfo() {
+		return null;
+	}
+
+	@Override
+	public String discount() {
+		return Product.super.discount();
+	}
+
+}

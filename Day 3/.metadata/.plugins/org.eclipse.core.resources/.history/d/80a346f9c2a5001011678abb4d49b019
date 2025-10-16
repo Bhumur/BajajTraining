@@ -1,0 +1,15 @@
+package com.example.demo.service;
+
+import com.example.demo.Repository;
+
+public class BookService {
+
+	private Repository repo;
+
+	public BookService(Repository repo) {
+		super();
+		this.repo = repo;
+	}
+	
+	
+}

@@ -1,0 +1,30 @@
+package com.example.demo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+
+import com.example.demo.utils.ConnectionUtils;
+
+public class ConfigResultSet {
+
+	public static void main(String[] args) {
+
+		Connection con = null;
+		try {
+			con = ConnectionUtils.getMySqlConnection();
+			
+			String sql = "Select * from customer;";
+			
+			PreparedStatement pstmt = con.prepareStatement(sql, ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_UPDATABLE);
+			
+			ResultSet rs = pstmt.executeQuery();
+			
+			System.out.println("Is Cursor Before First" + rs.isBeforeFirst());
+			
+		}catch(Exception e) {
+			
+		}
+	}
+
+}

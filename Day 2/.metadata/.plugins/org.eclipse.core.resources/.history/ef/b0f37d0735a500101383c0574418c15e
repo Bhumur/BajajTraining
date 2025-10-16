@@ -1,0 +1,91 @@
+package com.bank.app;
+
+import java.util.Scanner;
+
+import com.bank.entity.BankAccount;
+import com.bank.service.BankService;
+
+public class Application {
+
+	public static void main(String[] args) {
+		BankService service = new BankService();
+		
+		int option = 1;
+		Scanner scanner = new Scanner(System.in);
+		do {
+			System.out.println("\nOptions :- ");
+			System.out.println("1. Make Account with only Account Number.");
+			System.out.println("2. Make Account with only Account Number and Name.");
+			System.out.println("3. Make Account with all details.\n");
+			System.out.print("Enter Your Choice : ");
+			option = scanner.nextInt();
+			
+			switch(option) {
+				case 1:{
+					System.out.println("------Account With Only Acc Number------");
+					System.out.print("Enter Account Number : ");
+					int accNumber = scanner.nextInt();
+					BankAccount account = new BankAccount()
+							.setAccountNumber(accNumber);
+					if(service.addAccount(account))
+						System.out.println("Bank Account Successfully Created And Added to Array");
+					else
+						System.out.println("Bank Account Not Added to Array");
+					break;
+				}
+				case 2:{
+					System.out.println("------Account With Only Acc Number And Acc Holder Name------");
+					System.out.print("Enter Account Number : ");
+					int accNumber = scanner.nextInt();
+					System.out.print("Enter Account Holder Name : ");
+					String accHolderName = scanner.next();
+					BankAccount account = new BankAccount()
+							.setAccountNumber(accNumber)
+							.setAccountHolderName(accHolderName);
+					if(service.addAccount(account))
+						System.out.println("Bank Account Successfully Created And Added to Array");
+					else
+						System.out.println("Bank Account Not Added to Array");
+					break;
+				}
+				case 3:{
+					System.out.println("------Account With All Details------");
+					System.out.print("Enter Account Number : ");
+					int accNumber = scanner.nextInt();
+					System.out.print("Enter Account Holder Name : ");
+					String accHolderName = scanner.next();
+					System.out.print("Enter Account Balance : ");
+					double accBalance = scanner.nextDouble();
+					BankAccount account = new BankAccount()
+							.setAccountNumber(accNumber)
+							.setAccountHolderName(accHolderName)
+							.setAccountBalance(accBalance);
+					if(service.addAccount(account))
+						System.out.println("Bank Account Successfully Created And Added to Array");
+					else
+						System.out.println("Bank Account Not Added to Array");
+					break;
+				}
+				case 4: {
+					System.out.println("------Print All Account In Array------");
+					BankAccount []list = service.getAllAccount();
+					for(BankAccount account : list) {
+						System.out.println(account);
+					}
+					break;
+				}
+				case 5:{
+					System.out.println("------Top N Account In Array------");
+					System.out.print("Enter Value of N : ");
+					int n = scanner.nextInt();
+					BankAccount []list = service.getTopNAccount(n);
+					for(BankAccount account : list) {
+						System.out.println(account);
+					}
+					break;
+				}
+			}
+		}while(option!=0);
+	}
+
+}

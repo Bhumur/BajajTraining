@@ -1,0 +1,37 @@
+package com.example;
+
+import com.example.demo.Student;
+import com.example.demo.service.StudentService;
+
+public class Application {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StudentService service = new StudentService();
+		
+		Student ram = new Student(100, "Ram", "Agrawal", 80);
+		
+//		Student clonedRam = ram.clone(); // later
+		
+		System.out.println("Before Method Called ===> " + ram.toString());
+		
+		service.assignGrade(ram);
+		
+		System.out.println("After Method Called ===> " + ram.toString());
+		
+		
+		
+		Student shyam = new Student(Integer.valueOf(101), "Shyam", "Gupta", 98);
+		
+		System.out.println("Before Method Called ===> " + shyam.toString());
+		
+		service.assignGrade(shyam);
+		
+		System.out.println("After Method Called ===> " + shyam.toString());
+
+		Student vikas = new Student(Integer.parseInt(args[0]), args[1], args[2], Integer.parseInt(args[3]));
+		
+	}
+
+}

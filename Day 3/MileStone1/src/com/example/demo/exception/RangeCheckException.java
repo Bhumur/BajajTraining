@@ -1,0 +1,29 @@
+package com.example.demo.exception;
+
+import java.io.Serializable;
+
+/**
+ * @author bhumur
+ * Custom Exception Class
+ * @since version 1.0
+ */
+public class RangeCheckException extends Exception implements Serializable {
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 120L;
+	private String message;
+	
+	public RangeCheckException(String message) {
+		super(message);
+		this.message = message;
+	}
+
+	@Override
+	public String getMessage() {
+		return this.message.toUpperCase();
+	}
+	
+	
+}

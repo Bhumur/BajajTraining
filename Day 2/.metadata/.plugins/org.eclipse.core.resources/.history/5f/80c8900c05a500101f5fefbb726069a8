@@ -1,0 +1,26 @@
+package com.example;
+
+import com.example.demo.Insurance;
+import com.example.demo.LifeInsurance;
+
+public class InsuranceApplication {
+
+	
+	public static Insurance insuranceFactory(int key) {
+		Insurance insurance = null;
+		switch(key) {
+		case 1:{
+			insurance = new LifeInsurance();
+			break;
+		}
+		default:
+			break;
+		}
+		return insurance;
+	}
+	
+	public static void main(String []args) {
+		
+		
+	}
+}

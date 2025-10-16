@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy element &apos;CrudRepositry.java&apos; to &apos;Day4_Assignment/src/com.example.demo.repository&apos;&#x0D;&#x0A;- Original project: &apos;Day4_ThreadingAndCollectiona&apos;&#x0D;&#x0A;- Destination element: &apos;Day4_Assignment/src/com.example.demo.repository&apos;&#x0D;&#x0A;- Original element: &apos;com.example.demo.ifaces.CrudRepositry.java&apos;" description="Copy compilation unit" destination="=Day4_Assignment/src&lt;com.example.demo.repository" element1="/src&lt;com.example.demo.ifaces{CrudRepositry.java" files="0" flags="589830" folders="0" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyResources" stamp="1760317703189" units="1" version="1.0"/>
+</session>

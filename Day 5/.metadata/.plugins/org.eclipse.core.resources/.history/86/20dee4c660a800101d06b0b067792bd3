@@ -1,0 +1,33 @@
+package com.example.demo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
+
+public class Application {
+
+	public static void main(String []args) {
+		String sql = "Select b.bankid, b.bankname, c.customerid, c.customername from bank as b join customer as c join bankcustomer as bc on bc.bankid = b.bankid and bc.customerid = c.customerid;";
+		Connection connection = null;
+		
+		try {
+			
+			ResourceBundle bundle = ResourceBundle.getBundle("application");
+			String url = bundle.getString("datasource.url");
+			String username = bundle.getString("datasource.username");
+			String password = bundle.getString("datasource.password");
+			connection = DriverManager.getConnection(url,username,password);
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		
+		try(){
+			
+		}catch (SQLException e) {
+			// TODO: handle exception
+		}
+		
+	}
+}

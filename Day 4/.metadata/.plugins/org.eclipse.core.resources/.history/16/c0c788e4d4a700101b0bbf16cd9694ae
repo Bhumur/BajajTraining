@@ -1,0 +1,17 @@
+package com.example.demo;
+
+public class Grocery extends Product {
+	private String category;
+
+	public Grocery() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Grocery(String category) {
+		super();
+		this.category = category;
+	}
+	
+	
+}

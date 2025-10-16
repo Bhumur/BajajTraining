@@ -1,0 +1,15 @@
+package com.example.demo.utils;
+
+import java.sql.*;
+
+public class ConnectionUtils {
+	
+	public static Connection getMySqlConnection() {
+		return null;
+	}
+	
+	public static Connection getPostgressConnection() {
+		return null;
+	}
+	
+}

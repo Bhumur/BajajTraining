@@ -1,0 +1,18 @@
+package com.example.demo.module.two;
+
+public class ExecuterApplication {
+
+	public static void singleThread() {
+		
+	}
+	
+	public static void fixedThread() {
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

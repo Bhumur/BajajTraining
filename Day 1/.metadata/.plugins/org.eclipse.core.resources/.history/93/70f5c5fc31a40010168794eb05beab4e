@@ -1,0 +1,12 @@
+package traninig;
+
+public class Student {
+	
+	String firstName;
+	String lastName;
+	double markScored;
+	
+	public String toString() {
+		return this.firstName + this.lastName + this.markScored;
+	}
+}

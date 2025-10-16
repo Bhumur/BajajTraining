@@ -1,0 +1,9 @@
+package com.example.demo.module.one;
+
+public class CountNumber {
+	private int count;
+	
+	public CounterNumber(int count) {
+		this.
+	}
+}

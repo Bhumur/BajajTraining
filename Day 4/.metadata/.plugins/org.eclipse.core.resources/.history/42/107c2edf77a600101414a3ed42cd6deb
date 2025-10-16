@@ -1,0 +1,10 @@
+package com.example.demo.module.three;
+
+public class EmployeeService {
+	
+	private EmployeeRepoImpl repo;
+	
+	public EmployeeService() {
+		this.repo = new EmployeeRepoImpl();
+	}
+}

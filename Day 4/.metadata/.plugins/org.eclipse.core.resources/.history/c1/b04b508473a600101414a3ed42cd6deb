@@ -1,0 +1,10 @@
+package com.example.demo.ifaces;
+
+import java.util.Collection;
+import java.util.Comparator;
+
+public interface EmployeeRepository<T> extends CrudRepositry<T> {
+
+	Collection<T> sortByField(Comparator<T> comp, int key);
+	Collection<T> findByEmployeeName(String name);
+}

@@ -1,0 +1,26 @@
+package com.example.demo.module.two;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecuterApplication {
+
+	public static void singleThread(PrintStringTask tasks) {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+		
+		for(PrintStringTask eachTask : tasks) {
+			
+			executor.submit(eachTask);
+		}
+	}
+	
+	public static void fixedThread() {
+		
+	}
+	
+	public static void main(String[] args) {
+		
+		
+	}
+
+}

@@ -1,0 +1,19 @@
+package com.example.demo;
+
+import java.util.function.Predicate;
+
+public class EffectiveFinal {
+
+	public void learnEffectiveFinal() {
+		int marks = 90;
+		
+		Predicate<Integer> checkMark = (actual) -> {
+			mark+=10;
+			
+			return actual > 90;
+		};
+		
+		
+	}
+}
+

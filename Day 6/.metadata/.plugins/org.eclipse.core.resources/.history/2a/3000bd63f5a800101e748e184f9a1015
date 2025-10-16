@@ -1,0 +1,32 @@
+package com.example.demo.streams;
+
+import java.util.stream.IntStream;
+
+public class MiscStream {
+
+	public static void main(String[] args) {
+
+		IntStream marks = IntStream.of(45,55,67,89,90);
+		
+//		marks
+//		.filter(e -> e>60)
+//		.forEach(System.out::println);
+		
+//		System.out.println("Any");
+//		System.out.println(marks.anyMatch(e -> e>60));
+		
+//		System.out.println("All");
+//		System.out.println(marks.allMatch(e -> e>60));
+		
+//		System.out.println("Find First");
+//		System.out.println(marks.findFirst().getAsInt());
+	
+//		System.out.println("None match");
+//		System.out.println(marks.noneMatch(e -> e>90));
+		
+		System.out.println("Find Any");
+		System.out.println(marks.findAny().getAsInt());
+		
+		
+	}
+}

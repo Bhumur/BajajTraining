@@ -1,0 +1,34 @@
+package com.example.demo;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDateTime;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		String filePath = "data.csv"; // path to your CSV file
+        String line;
+
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                int id = Integer.parseInt(values[0]);
+                LocalDateTime dateTime = LocalDateTime.parse(values[1]);
+            	String location = values[2];
+            	Severity severity = Severity.valueOf(values[3]);
+            	String cause = values[4];
+                for (String val : values) {
+                    System.out.print(val + "  ");
+                    
+                }
+                System.out.println();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+	}
+
+}

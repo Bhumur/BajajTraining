@@ -1,0 +1,8 @@
+package com.example.demo.ifaces;
+
+public class UsdToInrConvertor implements Function {
+
+	
+	
+	
+}

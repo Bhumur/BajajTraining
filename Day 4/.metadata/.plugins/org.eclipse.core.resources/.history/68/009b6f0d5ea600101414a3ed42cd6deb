@@ -1,0 +1,15 @@
+package com.example.demo.module.one;
+
+public class PrintStringTask implements Runnable{
+
+	public PrintStringTask(String string, String string2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void run() {
+		
+		PrintString.print(str1, str2);
+	}
+
+}

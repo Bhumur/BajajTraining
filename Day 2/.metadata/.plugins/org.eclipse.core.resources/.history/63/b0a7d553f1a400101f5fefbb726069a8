@@ -1,0 +1,71 @@
+package com.example;
+
+import java.util.Scanner;
+
+import com.example.demo.Book;
+import com.example.demo.service.BookService;
+
+public class BookApplication {
+	
+	public static void printBooks(Book[] books) {
+		for(Book book : books)
+				System.out.println(book);
+	}
+	
+	public static void main(String args[]) {
+		
+		Book java = new Book(1010, "Head First Java", 450);
+		Book anotherJava = new Book(1010, "Head First Java", 450);
+		
+		System.out.println("Is Equal == " + java.equals(anotherJava));
+		
+		BookService service = new BookService();
+		
+		String choice = "add";
+		Scanner scanner = new Scanner(System.in);
+		switch(choice.toLowerCase()) {
+		case "add":{
+			System.out.print("Enter Book Number : ");
+			int bookNumber = scanner.nextInt();
+			System.out.print("Enter Book Name : ");
+			String bookName = scanner.nextLine();
+			System.out.print("Enter Book Rate Per Unit : ");
+			double ratePerUnit = scanner.nextDouble();
+			Book book = new Book(bookNumber, bookName, ratePerUnit);
+			if(service.addBook(book))
+				System.out.println("Book Successfully Added!!");
+			else
+				System.out.println("Book Not Added!!");
+
+			break;
+		}
+		case "addAll":{
+			System.out.print("Enter Number of Books Want to Add : ");
+			int count = scanner.nextInt();
+			Book list[] = new Book[count];
+			
+			for(int i=0;i<count;i++) {
+				System.out.print("Enter Book Number : ");
+				int bookNumber = scanner.nextInt();
+				System.out.print("Enter Book Name : ");
+				String bookName = scanner.nextLine();
+				System.out.print("Enter Book Rate Per Unit : ");
+				double ratePerUnit = scanner.nextDouble();
+				list[i] = new Book(bookNumber, bookName, ratePerUnit);
+				
+			}
+			if(service.addAll(list))
+				System.out.println("Book Successfully Added!!");
+			else
+				System.out.println("Book Not Added!!");
+			
+			break;
+		}
+		case "size" :{
+			System.out.println("Size of Books List is " + service.getSize());
+		}
+		default :
+			break;
+		}
+	}
+}

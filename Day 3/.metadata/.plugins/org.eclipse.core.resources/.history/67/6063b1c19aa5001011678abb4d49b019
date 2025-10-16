@@ -1,0 +1,43 @@
+package com.example.demo.abstraction;
+
+import java.time.LocalDate;
+
+public class Application {
+	
+	
+	public static void main(String []args) {
+		
+		// supertype = subtype is always valid
+		
+		Insurance insObj = new LifeInsurance(1010 ,"Ramesh", 900000, LocalDate.parse("2000-08-05"));
+		
+		// calling the overriden methid using super class refrence
+		// at run time it will call the lifeinsurance cal premium
+		
+		System.out.println(insObj.calculatePremium());
+		
+		LifeInsurance lifeObj = new LifeInsurance(1012 ,"Ramesh", 200000, LocalDate.parse("2005-08-05"));
+		
+		// 
+		System.out.println(insObj.nonAbstract());
+		
+		Insurance insObj2 = new LifeInsurance(1010 ,"Ramesh", 900000, LocalDate.parse("2000-08-05"));
+		
+//		System.out.println(intObj2.sayHello()); // obj refrence is of super type so cannot call the sub class method
+		
+		System.out.println(((LifeInsurance) insObj2).sayHello()); //down cating to sub type and call the required method
+		
+		Number first = Integer.valueOf(20);
+		
+//		Boolean isThisAllowed = first; // not acceptable
+		
+//		Boolean isThisAllowed = (Boolean)first; // bc they are from diffrent classes
+		
+		Double second = (Double)first; 
+		
+		
+		
+	}
+	
+	
+}

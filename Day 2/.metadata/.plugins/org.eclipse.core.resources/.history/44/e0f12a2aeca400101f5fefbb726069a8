@@ -1,0 +1,16 @@
+package com.example.demo.service;
+
+import com.example.demo.Book;
+
+public class BookService {
+	
+	
+	private Book[] books;
+	
+	public BookService() {
+		super();
+		this.books = new Book[10];
+	}
+	
+	
+}

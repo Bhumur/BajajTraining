@@ -1,0 +1,42 @@
+package traninig;
+
+public class Speaker {
+
+	private String firstNmae;
+	private String topic;
+	private String duration;
+	
+	
+	
+	
+	public Speaker(String firstNmae, String topic, String duration) {
+		super();
+		this.firstNmae = firstNmae;
+		this.topic = topic;
+		this.duration = duration;
+	}
+	public String getFirstNmae() {
+		return firstNmae;
+	}
+	public void setFirstNmae(String firstNmae) {
+		this.firstNmae = firstNmae;
+	}
+	public String getTopic() {
+		return topic;
+	}
+	public void setTopic(String topic) {
+		this.topic = topic;
+	}
+	public String getDuration() {
+		return duration;
+	}
+	public void setDuration(String duration) {
+		this.duration = duration;
+	}
+	@Override
+	public String toString() {
+		return "Speaker [firstNmae=" + firstNmae + ", topic=" + topic + ", duration=" + duration + "]";
+	}
+	
+	
+}

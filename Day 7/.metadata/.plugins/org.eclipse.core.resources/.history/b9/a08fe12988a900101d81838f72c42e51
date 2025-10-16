@@ -1,0 +1,17 @@
+package com.example.demo;
+
+import java.util.function.IntPredicate;
+
+public class Application {
+
+	public static void main(String []args) {
+		System.out.println("Hello Java 8");
+		
+		EffectiveFinal obj = new EffectiveFinal();
+		
+		obj.learnEffectiveFinal();
+		
+		
+		IntPredicate primeVar = 
+	}
+}

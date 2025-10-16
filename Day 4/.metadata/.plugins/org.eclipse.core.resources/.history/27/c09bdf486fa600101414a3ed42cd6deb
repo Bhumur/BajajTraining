@@ -1,0 +1,9 @@
+package com.example.demo.ifaces;
+
+import java.util.Collection;
+import java.util.Comparator;
+
+public interface EmployeeRepository extends CrudRepositry<T> {
+
+	Collection<T> sortByLocation(Comparator<T> comp);
+}

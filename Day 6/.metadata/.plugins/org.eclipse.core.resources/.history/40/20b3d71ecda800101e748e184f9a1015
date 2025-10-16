@@ -1,0 +1,43 @@
+package com.example.demo;
+
+import java.lang.StackWalker.Option;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
+public class OptionalUsage {
+	
+	public Map<Integer, String> map;
+
+	public OptionalUsage() {
+		super();
+		this.map = new HashMap<>();
+		
+		this.map.put(1, "Aman");
+		this.map.put(2, "Bhumur");
+		this.map.put(3, "Chetan");
+		this.map.put(4, "Daman");
+		this.map.put(5, "Enum");
+		this.map.put(6, "Fugam");
+	}
+// the return value may be null if no matching value is found
+	public String searchName(int key) {
+		return this.map.get(key);
+	}
+// return value will be a optional with a value or not 
+	public Optional<String> searchNameCaseTwo(int key){
+		return Optional.of(searchName(key));
+	}
+	
+	public static void main(String []arg) {
+		OptionalUsage obj = new OptionalUsage();
+		
+		System.out.println(obj.searchName(23).length());
+		
+		
+		obj.searchNameCaseTwo(23).ifPresent((e)-> System.out.println(e));
+	}
+	
+}

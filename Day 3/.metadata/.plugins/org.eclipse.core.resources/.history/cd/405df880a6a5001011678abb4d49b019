@@ -1,0 +1,29 @@
+package com.exercise.automobiles;
+
+import com.exercise.iface.Automobile;
+
+public class ShowRoom {
+	
+	public Automobile autoFactory(int choice, String color, double price, String model) {
+		Automobile automobile = null;
+		switch(choice) {
+			case 1:{
+				automobile = new MarutiCar(color, price, model);
+				break;
+			}
+			case 2:{
+				automobile = new PulsarBike(color, price, model);
+				break;
+			}
+			default:{
+				break;
+			}
+		}
+		return automobile;
+	}
+	
+	public String printQutation(Automobile automobile) {
+		return automobile.toString();
+	}
+	
+}

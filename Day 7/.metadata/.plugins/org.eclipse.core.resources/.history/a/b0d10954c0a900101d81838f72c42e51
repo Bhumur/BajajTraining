@@ -1,0 +1,33 @@
+package com.example.demo;
+
+import java.lang.reflect.Method;
+
+import com.example.demo.annotation.Invoker;
+import com.example.demo.annotation.Table;
+
+public class ApplicationAnnotation {
+
+	public static void main(String[] args) {
+
+		Book java = new Book();
+		Class<?> myClass = java.getClass();
+		Table table = myClass.getAnnotation(Table.class);
+		System.out.println(table.name());
+		
+		
+		Method methodLevel = null;
+		try {
+			methodLevel = myClass.getMethod("find", String.class);
+			
+			
+		} catch (NoSuchMethodException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		System.out.println(methodLevel.getName());
+	}
+
+}

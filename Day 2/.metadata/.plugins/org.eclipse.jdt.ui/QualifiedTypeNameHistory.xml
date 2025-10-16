@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+    <fullyQualifiedTypeName name="com.example.demo.service.StudentService"/>
+    <fullyQualifiedTypeName name="com.example.Application"/>
+    <fullyQualifiedTypeName name="com.example.demo.Student"/>
+    <fullyQualifiedTypeName name="com.example.demo.service.BookService"/>
+    <fullyQualifiedTypeName name="java.awt.print.Book"/>
+    <fullyQualifiedTypeName name="com.example.demo.Book"/>
+    <fullyQualifiedTypeName name="com.example.demo.LifeInsurance"/>
+    <fullyQualifiedTypeName name="com.example.demo.service.InsuranceService"/>
+    <fullyQualifiedTypeName name="java.time.LocalDate"/>
+    <fullyQualifiedTypeName name="com.example.demo.Insurance"/>
+    <fullyQualifiedTypeName name="java.util.Arrays"/>
+    <fullyQualifiedTypeName name="com.bank.service.BankService"/>
+    <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="java.lang.Comparable"/>
+    <fullyQualifiedTypeName name="com.bank.entity.BankAccount"/>
+</qualifiedTypeNameHistroy>

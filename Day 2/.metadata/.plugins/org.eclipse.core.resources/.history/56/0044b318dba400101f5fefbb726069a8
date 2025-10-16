@@ -1,0 +1,31 @@
+package com.example.demo.service;
+
+import com.example.demo.Student;
+
+public class StudentService {
+
+	//Passing an Object to the method 
+	//
+	
+	public Student assignGrade(Student student) {
+		
+		// Refactoring for use overloading method
+		student.setGrade(assignGrade(student.getMarkScored()));
+		
+		
+//		if(student.getMarkScored()>80)
+//			student.setGrade("A");
+//		else
+//			student.setGrade("B");
+		return student;
+	}
+	
+	//Overloaded Method which takes the marks as arguments
+	
+	public String assignGrade(int mark) {
+		String grade = "B";
+		if(mark>80)
+			grade = "A";
+		return grade;
+	}
+}

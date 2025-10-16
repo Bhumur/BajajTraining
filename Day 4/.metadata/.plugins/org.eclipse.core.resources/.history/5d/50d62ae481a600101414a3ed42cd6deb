@@ -1,0 +1,94 @@
+package com.example.demo.module.three;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.Scanner;
+
+import com.example.demo.exception.ElementsAlreadyExistException;
+import com.example.demo.exception.NotFoundException;
+
+public class Application {
+	
+	public static void print(Collection<Employee> empList) {
+		Iterator<Employee> itr = empList.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+	}
+	
+	
+	
+	public static void main(String []args) {
+		EmployeeService service = new EmployeeService();
+		Scanner scan = new Scanner(System.in);
+		int key = 1;
+		int count =1;
+		do {
+			System.out.print("Enter key : ");
+			key = scan.nextInt();
+			switch(key) {
+				case 1:{
+					System.out.println("----------Add Employee-------- ");
+					try {
+						service.addEmployee(new Employee(scan.nextInt(), scan.next(), scan.next(),scan.nextDouble()));
+					} catch (ElementsAlreadyExistException e) {
+						e.printStackTrace();
+					}
+//					try {
+//						service.addEmployee(new Employee(count,"Employee " + count,"Location " + count, 1000*count ));
+//						count+=2;
+//					} catch (ElementsAlreadyExistException e) {
+//						// TODO Auto-generated catch block
+//						e.printStackTrace();
+//					}
+					break;
+				}
+				case 2:{
+					System.out.println("----------Remove Employee-------- ");
+					try {
+						service.removeEmployee(3);
+					} catch (NotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					break;
+				}
+				case 3:{
+					System.out.println("----------Find All Employee-------- ");
+					print(service.getAllEmployee());
+					break;
+				}
+				case 4:{
+					System.out.println("----------Find By Id-------- ");
+					try {
+						System.out.println(service.getEmployeeById(5));
+					}catch (NotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+					break;
+				}
+				case 5:{
+					System.out.println("----------Find Employee by Name-------- ");
+						System.out.println(service.getEmployeeByName("Employee 7"));
+					
+					
+					break;
+				}
+				case 6:{
+					System.out.println("----------Sorted Employees-------- ");
+					System.out.println("**********Based On Name***********");
+					print(service.getSortedListOfEmployeeByName());
+					System.out.println("**********Based On Salary***********");
+					print(service.getSortedListOfEmployeeBySalary());
+					System.out.println("**********Based On Location***********");
+					print(service.getSortedListOfEmployeeByLocation());
+					break;
+				}
+		}
+		}while(key!=0);
+		
+	}
+}

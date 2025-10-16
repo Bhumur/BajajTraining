@@ -1,0 +1,11 @@
+package com.example.demo.module.one;
+
+public class PrintStringTask implements Runnable{
+
+	@Override
+	public void run() {
+
+		PrintString.print(str1, str2);
+	}
+
+}

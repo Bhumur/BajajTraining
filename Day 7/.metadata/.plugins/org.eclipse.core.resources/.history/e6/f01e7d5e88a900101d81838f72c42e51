@@ -1,0 +1,19 @@
+package com.example.demo;
+
+import java.util.function.IntPredicate;
+
+public class Application {
+
+	public static void main(String []args) {
+		System.out.println("Hello Java 8");
+		
+		EffectiveFinal obj = new EffectiveFinal();
+		
+		obj.learnEffectiveFinal();
+		
+		
+		IntPredicate primitiveVersion = (number) -> number % 2 == 0;
+		
+		System.out.println("Is Even -> " + primitiveVersion.test(232));
+	}
+}

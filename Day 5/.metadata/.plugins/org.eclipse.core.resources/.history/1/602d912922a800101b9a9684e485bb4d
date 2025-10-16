@@ -1,0 +1,43 @@
+package com.example.demo;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+
+import com.example.demo.utils.ConnectionUtils;
+
+public class TransactionDemo {
+
+	public static void main(String[] args) {
+
+		Connection connection = null;
+		try {
+			connection = ConnectionUtils.getMySqlConnection();
+//			connection.commit();
+			connection.setAutoCommit(false);
+			
+			String insertSql = "insert into doctor values(?,?,?);";
+			
+			String updateSql = "update patient set doctorid = 102 where patientid = 3";
+			
+			PreparedStatement query = connection.prepareStatement(insertSql);
+			
+			query.setInt(1, 105);
+			query.setString(2, "Dogesh");
+			query.setString(3, "OPD");
+			
+			query.addBatch(updateSql);
+			
+//			query = connection.prepareStatement(updateSql);
+			query.executeBatch();
+			
+			connection.commit();
+			connection.setAutoCommit(true);
+			
+		} catch(SQLException e) {
+//			connection.rollback();
+			e.printStackTrace();
+		}
+	}
+
+}

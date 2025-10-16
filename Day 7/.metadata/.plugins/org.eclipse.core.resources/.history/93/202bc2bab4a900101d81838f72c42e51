@@ -1,0 +1,32 @@
+package com.example.demo;
+
+import java.sql.Time;
+import java.util.Optional;
+import java.util.stream.Stream;
+
+public class ParallelStreamDemo {
+
+	public static void main(String[] args) {
+
+		Optional<Integer> total = Stream.of(1,2,3,4,5,6,7,8,9,10)
+									.parallel()
+									.filter(e -> e>0)
+									.peek( e -> System.out.println(Thread.currentThread().getName()))
+									.reduce(Integer::sum);
+		total.ifPresent(e -> System.out.println(e));
+		
+		
+		int total1 = Stream.of(1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1)
+				.parallel()
+				.peek( e -> System.out.println(Thread.currentThread().getName()))
+				.reduce(10,Integer::sum);
+		System.out.println(total1);
+		
+		System.out.println(
+		Stream.generate(() -> 1).limit(200)
+		parallel()
+		.peek( e -> System.out.println(Thread.currentThread().getName()))
+		.reduce(10,Integer::sum));
+	}
+
+}

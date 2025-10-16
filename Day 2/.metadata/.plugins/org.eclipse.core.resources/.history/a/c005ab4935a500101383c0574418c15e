@@ -1,0 +1,54 @@
+package com.bank.entity;
+
+import java.util.Objects;
+
+public class BankAccount implements Comparable<BankAccount>{
+	private int accountNumber;
+	private String accountHolderName;
+	private double accountBalance;
+	
+	public BankAccount setAccountNumber(int accNumber) {
+		this.accountNumber = accNumber;
+		return this;
+	}
+	public BankAccount setAccountHolderName(String accHolderName) {
+		this.accountHolderName = accHolderName;
+		return this;
+	}
+	public BankAccount setAccountBalance(double accBalance) {
+		this.accountBalance = accBalance;
+		return this;
+	}
+	
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountBalance, accountHolderName, accountNumber);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BankAccount other = (BankAccount) obj;
+		return Double.doubleToLongBits(accountBalance) == Double.doubleToLongBits(other.accountBalance)
+				&& Objects.equals(accountHolderName, other.accountHolderName) && accountNumber == other.accountNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "BankAccount [accountNumber=" + accountNumber + ", accountHolderName=" + accountHolderName
+				+ ", accountBalance=" + accountBalance + "]";
+	}
+	@Override
+	public int compareTo(BankAccount o) {
+		
+		return this.accountBalance - o.accountBalance;
+	}
+	
+	
+}

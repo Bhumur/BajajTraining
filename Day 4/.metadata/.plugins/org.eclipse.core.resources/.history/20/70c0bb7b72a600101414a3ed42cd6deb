@@ -1,0 +1,11 @@
+package com.example.demo.ifaces;
+
+import java.util.Collection;
+
+public interface CrudRepositry<T> {
+	
+	boolean add(T t);
+	T findById(int id) throws ElementsAlreadyExistException;
+	boolean remove(int id);
+	Collection<T> findAll();
+}

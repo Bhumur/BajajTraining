@@ -1,0 +1,15 @@
+package com.example.demo.module.one;
+
+public class SyncAppliction {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+//		new PrintStringTask("Idly", "Sambhar");
+//		new PrintStringTask("Pizza", "Coke");
+//		new PrintStringTask("Pav", "Missel");
+//		new PrintStringTask("Tea", "Biscut");
+		Thread thread1 = new Thread(new PrintStringTask("Idly", "Sambhar"));
+		thread1.start();
+	}
+
+}

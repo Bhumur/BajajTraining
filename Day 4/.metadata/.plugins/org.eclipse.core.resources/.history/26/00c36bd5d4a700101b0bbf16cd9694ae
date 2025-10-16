@@ -1,0 +1,17 @@
+package com.example.demo;
+
+public class Textile extends Product {
+	private String facbric;
+
+	public Textile() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Textile(int productId, String productName, double productPrice, String fabric) {
+		super(productId, productName, productPrice);
+		this.facbric = fabric;
+	}
+	
+	
+}

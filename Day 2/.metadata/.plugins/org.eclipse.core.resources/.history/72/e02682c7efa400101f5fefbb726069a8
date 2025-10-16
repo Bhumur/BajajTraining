@@ -1,0 +1,46 @@
+package com.example.demo.service;
+
+import com.example.demo.Book;
+
+public class BookService {
+	
+	
+	private Book[] books;
+	private int size = 0;
+	
+	public BookService() {
+		super();
+		this.books = new Book[10];
+	}
+	
+	public void resize() {
+		Book[] resizedBooks = new Book[this.books.length];
+		int i = 0;
+		for(Book book : this.books) {
+			resizedBooks[i] = book;
+			i++;
+		}
+	}
+	public boolean addBook(Book book) {
+		if(size==this.books.length)
+			resize();
+		this.books[size] = book;
+		
+		return true;
+	}
+	
+	public boolean addAll(Book[] books) {
+		for()
+		return true;
+	}
+	
+	public Book[] getBooks() {
+		
+		return null;
+	}
+	
+	public int getSize() {
+		return 0;
+	}
+	
+}

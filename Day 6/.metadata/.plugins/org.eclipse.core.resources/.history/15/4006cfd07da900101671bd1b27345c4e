@@ -1,0 +1,79 @@
+package com.example.demo;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.util.Objects;
+
+public class LogMessages {
+	
+	private int id;
+	private LocalDateTime dateTime;
+	private	String location;
+	private Severity severity;
+	private String cause;
+	public LogMessages(int id, LocalDateTime dateTime, String location, Severity severity, String cause) {
+		super();
+		this.id = id;
+		this.dateTime = dateTime;
+		this.location = location;
+		this.severity = severity;
+		this.cause = cause;
+	}
+	public LogMessages() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public LocalDateTime getDateTime() {
+		return dateTime;
+	}
+	public void setDateTime(LocalDateTime dateTime) {
+		this.dateTime = dateTime;
+	}
+	public String getLocation() {
+		return location;
+	}
+	public void setLocation(String location) {
+		this.location = location;
+	}
+	public Severity getSeverity() {
+		return severity;
+	}
+	public void setSeverity(Severity severity) {
+		this.severity = severity;
+	}
+	public String getCause() {
+		return cause;
+	}
+	public void setCause(String cause) {
+		this.cause = cause;
+	}
+	@Override
+	public String toString() {
+		return "LogMessages [id=" + id + ", dateTime=" + dateTime + ", location=" + location + ", severity=" + severity
+				+ ", cause=" + cause + "]";
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(cause, dateTime, id, location, severity);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		LogMessages other = (LogMessages) obj;
+		return Objects.equals(cause, other.cause) && Objects.equals(dateTime, other.dateTime) && id == other.id
+				&& Objects.equals(location, other.location) && severity == other.severity;
+	}
+	
+	
+}

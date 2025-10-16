@@ -1,0 +1,13 @@
+package com.exercise.automobiles;
+
+import com.exercise.iface.Automobile;
+
+public class NewShowRoom extends ShowRoom {
+	@Override
+	public Automobile autoFactory(int choice, String color, double price, String model) {
+		Automobile automobile = null;
+		if(choice<3) {
+			super.autoFactory(choice, color, price, model);
+		}
+	}
+}

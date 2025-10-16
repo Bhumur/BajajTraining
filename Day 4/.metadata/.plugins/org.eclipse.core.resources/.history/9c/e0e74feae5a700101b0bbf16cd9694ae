@@ -1,0 +1,29 @@
+package com.example.demo.repository;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+
+import com.example.demo.Grocery;
+import com.example.demo.Product;
+import com.example.demo.Textile;
+import com.example.demo.exception.ElementsAlreadyExistException;
+import com.example.demo.exception.NotFoundException;
+
+public class GroceryRepoImpl extends ProductRepoImpl implements GroceryRepositry {
+
+	@Override
+	public boolean update(int a, Product t, Collection<Product> list) throws NotFoundException {
+		super.update(a, t, list);
+		Grocery product = (Grocery)super.findById(a, list);
+		product.setCategory(((Grocery)t).getCategory());
+		return true;
+	}
+
+	@Override
+	public Collection<Textile> findByFabric(String fabric, Collection<Product> list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,84 @@
+package com.example;
+
+import java.util.Scanner;
+
+import com.example.demo.Student;
+import com.example.demo.service.StudentService;
+
+public class Application {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StudentService service = new StudentService();
+		
+		Student ram = new Student(100, "Ram", "Agrawal", 80);
+		
+//		Student clonedRam = ram.clone(); // later
+		
+		System.out.println("Before Method Called ===> " + ram.toString());
+		
+		service.assignGrade(ram);
+		
+		System.out.println("After Method Called ===> " + ram.toString());
+		
+		
+		
+		
+		Student shyam = new Student(Integer.valueOf(101), "Shyam", "Gupta", 98);
+		
+		System.out.println("Before Method Called ===> " + shyam.toString());
+		
+		service.assignGrade(shyam);
+		
+		System.out.println("After Method Called ===> " + shyam.toString());
+		
+		/*
+		 * Taking input from command Line arguments
+		 */
+
+		Student vikas = new Student(Integer.parseInt(args[0]), args[1], args[2], Integer.parseInt(args[3]));
+		
+		
+		System.out.println("Before Method Called ===> " + vikas.toString());
+		
+		service.assignGrade(vikas);
+		
+		System.out.println("After Method Called ===> " + vikas.toString());
+		
+		/*
+		 * Taking input for scanner
+		 */
+		
+//		Scanner scanner = new Scanner(System.in);
+//		int rollNumber = scanner.nextInt();
+//		String firstName = scanner.next();
+//		String lastName = scanner.next();
+//		int markScored = scanner.nextInt();
+//		
+//		Student bhumur = new Student(rollNumber, firstName, lastName, markScored);
+//		
+//		System.out.println("Before Method Called ===> " + bhumur.toString());
+//		
+//		service.assignGrade(bhumur);
+//		
+//		System.out.println("After Method Called ===> " + bhumur.toString());
+//		
+//		scanner.close();
+		
+		
+		service.showDetail();
+		
+		Runnable task = new Runnable() {
+			@Override
+			public void run() {
+				
+			}
+		};
+		
+		
+		
+		
+	}
+
+}

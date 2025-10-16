@@ -1,0 +1,15 @@
+package module_two;
+
+import com.example.demo.NameService;
+//import com.training.AgeService;
+
+public class Demo {
+
+	public static void main(String[] args) {
+	
+		NameService name = new NameService();
+		
+//		AgeService age = new AgeService();
+	}
+
+}

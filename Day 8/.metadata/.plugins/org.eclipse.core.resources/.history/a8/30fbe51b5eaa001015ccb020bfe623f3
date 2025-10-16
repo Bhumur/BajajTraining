@@ -1,0 +1,12 @@
+package module_two;
+
+import com.example.demo.NameService;
+
+public class Demo {
+
+	public static void main(String[] args) {
+	
+		NameService name = new NameService();
+	}
+
+}

@@ -1,0 +1,72 @@
+package com.example.demo.streams;
+
+import java.time.LocalDate;
+
+public class BloodDonor {
+	
+	private int donorId;
+	private String donerName;
+	private int donerAge;
+	private LocalDate lastDonated;
+	private BloodGroup bloodGroup;
+	private long mobileNumber;
+	public BloodDonor() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public BloodDonor(int donorId, String donerName, int donerAge, LocalDate lastDonated, BloodGroup bloodGroup,
+			long mobileNumber) {
+		super();
+		this.donorId = donorId;
+		this.donerName = donerName;
+		this.donerAge = donerAge;
+		this.lastDonated = lastDonated;
+		this.bloodGroup = bloodGroup;
+		this.mobileNumber = mobileNumber;
+	}
+	public int getDonorId() {
+		return donorId;
+	}
+	public void setDonorId(int donorId) {
+		this.donorId = donorId;
+	}
+	public String getDonerName() {
+		return donerName;
+	}
+	public void setDonerName(String donerName) {
+		this.donerName = donerName;
+	}
+	public int getDonerAge() {
+		return donerAge;
+	}
+	public void setDonerAge(int donerAge) {
+		this.donerAge = donerAge;
+	}
+	public LocalDate getLastDonated() {
+		return lastDonated;
+	}
+	public void setLastDonated(LocalDate lastDonated) {
+		this.lastDonated = lastDonated;
+	}
+	public BloodGroup getBloodGroup() {
+		return bloodGroup;
+	}
+	public void setBloodGroup(BloodGroup bloodGroup) {
+		this.bloodGroup = bloodGroup;
+	}
+	public long getMobileNumber() {
+		return mobileNumber;
+	}
+	public void setMobileNumber(long mobileNumber) {
+		this.mobileNumber = mobileNumber;
+	}
+	@Override
+	public String toString() {
+		return "BloodDoner [donorId=" + donorId + ", donerName=" + donerName + ", donerAge=" + donerAge
+				+ ", lastDonated=" + lastDonated + ", bloodGroup=" + bloodGroup + ", mobileNumber=" + mobileNumber
+				+ "]";
+	}
+	
+	
+	
+}

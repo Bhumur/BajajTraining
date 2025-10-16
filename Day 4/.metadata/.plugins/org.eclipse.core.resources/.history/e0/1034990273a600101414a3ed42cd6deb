@@ -1,0 +1,27 @@
+package com.example.demo.module.three;
+
+import java.util.Collection;
+import java.util.Iterator;
+
+public class Application {
+	
+	public static void print(Collection<Employee> empList) {
+		Iterator<Employee> itr = empList.iterator();
+		
+		while(itr.hasNext()) {
+			System.out.println(itr.next());
+		}
+	}
+	
+	
+	
+	public static void main() {
+		int key = 1;
+		
+		switch(key) {
+			case 1:{
+				System.out.println("----------Add Employee-------- ");
+			}
+		}
+	}
+}

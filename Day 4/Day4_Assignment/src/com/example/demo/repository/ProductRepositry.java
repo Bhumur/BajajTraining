@@ -1,0 +1,11 @@
+package com.example.demo.repository;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+
+import com.example.demo.Product;
+
+public interface ProductRepositry extends CrudRepositry<Product> {
+	Collection<Product> getSortedList(Comparator<Product> comp, List<Product> list);
+}

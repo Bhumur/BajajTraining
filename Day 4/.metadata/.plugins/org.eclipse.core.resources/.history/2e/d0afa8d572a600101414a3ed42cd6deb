@@ -1,0 +1,20 @@
+package com.example.demo.module.three;
+
+import java.util.Collection;
+
+public class Application {
+	
+	public static void print(Collection<Employee> empList)
+	
+	
+	
+	public static void main() {
+		int key = 1;
+		
+		switch(key) {
+			case 1:{
+				
+			}
+		}
+	}
+}

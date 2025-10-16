@@ -1,0 +1,29 @@
+package com.bank.entity;
+
+public class BankAccount {
+	private int accountNumber;
+	private String accountHolderName;
+	private double accountBalance;
+	
+	public BankAccount() {
+		super();
+	}
+	
+	public BankAccount(int accNumber) {
+		super();
+		this.accountNumber = accNumber;
+	}
+	
+	public BankAccount(int accNumber, String accHolderName) {
+		super();
+		this.accountNumber = accNumber;
+		this.accountHolderName = accHolderName;
+	}
+	
+	public BankAccount(int accNumber, String accHolderName, double accBalance) {
+		super();
+		this.accountNumber = accNumber;
+		this.accountHolderName = accHolderName;
+		this.accountBalance = accBalance;
+	}
+}

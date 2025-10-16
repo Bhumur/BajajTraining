@@ -1,0 +1,73 @@
+package com.example.demo;
+
+public class Student {
+
+	private int rollNumber;
+	private String firstName;
+	private String lastName;
+	private int markScored;
+	private String grade;
+	
+	//CTOR cannot be synchronized
+//	public synchronized Student() {}
+	
+	//CTOR can have throws class
+//	public Student() throws RuntimeException{
+//		super();
+//	}
+	
+	// CTOR can have any modifier
+//	protected Student(){
+//		super();
+//	}
+	
+	protected Student(){
+//		this(); Either super or this not together
+		super();
+	}
+	
+	public Student(int rollNumber, String firstName, String lastName, int markScored) {
+		super();
+		this.rollNumber = rollNumber;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.markScored = markScored;
+	}
+	public int getRollNumber() {
+		return rollNumber;
+	}
+	public void setRollNumber(int rollNumber) {
+		this.rollNumber = rollNumber;
+	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+	public int getMarkScored() {
+		return markScored;
+	}
+	public void setMarkScored(int markScored) {
+		this.markScored = markScored;
+	}
+	public String getGrade() {
+		return grade;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
+	}
+	
+	@Override
+	public String toString() {
+		return "Student [rollNumber=" + rollNumber + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", markScored=" + markScored + ", grade=" + grade + "]";
+	}
+	
+}

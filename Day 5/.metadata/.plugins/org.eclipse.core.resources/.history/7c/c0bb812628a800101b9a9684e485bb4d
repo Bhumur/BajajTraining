@@ -1,0 +1,19 @@
+package com.example.demo;
+
+import java.sql.Connection;
+
+import com.example.demo.utils.ConnectionUtils;
+
+public class ConfigResultSet {
+
+	public static void main(String[] args) {
+
+		Connection con = null;
+		try {
+			con = ConnectionUtils.getMySqlConnection();
+			
+			String sql = "Select * from customer;"
+		}
+	}
+
+}

@@ -1,0 +1,54 @@
+package com.example.demo;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.ResourceBundle;
+
+import com.example.demo.entity.Bank;
+import com.example.demo.entity.Customer;
+
+public class Application {
+
+	public static void main(String []args) {
+		
+		List<Bank> bankList = new ArrayList<>();
+		List<Customer> customerList = new ArrayList<>();
+		
+		String sql = "Select b.bankid, b.bankname, c.customerid, c.customername from bank as b join customer as c join bankcustomer as bc on bc.bankid = b.bankid and bc.customerid = c.customerid;";
+		ResourceBundle bundle = ResourceBundle.getBundle("application");
+		String url = bundle.getString("datasource.url");
+		String username = bundle.getString("datasource.username");
+		String password = bundle.getString("datasource.password");
+		
+		try(Connection connection = DriverManager.getConnection(url,username,password);
+				PreparedStatement query = connection.prepareStatement(sql);
+				ResultSet rs = query.executeQuery()){
+			while(rs.next()) {
+				int bankid = rs.getInt(1);
+				String bankname = rs.getString(2);
+				int customerid = rs.getInt(3);
+				String customername = rs.getString(4);
+				Bank bank = new Bank(bankid, bankname);
+				if(bankList.contains(bank))
+				{
+					getBank(bank, bankList);
+				}
+			}
+		}catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
+
+	private static bank getBank(Bank bank, List<Bank> bankList) {
+		for(Bank eachBank : bankList) {
+			if(eachBank.equals(bank))
+				return eachBank;
+		}
+	}
+}

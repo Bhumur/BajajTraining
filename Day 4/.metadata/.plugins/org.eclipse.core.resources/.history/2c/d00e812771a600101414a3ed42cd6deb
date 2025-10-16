@@ -1,0 +1,57 @@
+package com.example.demo.module.three;
+
+import java.util.Comparator;
+
+public class EmployeeUtils {
+
+	public class NameComarator implements Comparator<Employee>{
+
+		@Override
+		public int compare(Employee o1, Employee o2) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+	}
+	
+	public class SalaryComarator implements Comparator<Employee>{
+
+		@Override
+		public int compare(Employee o1, Employee o2) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+	}
+	
+	public class LocationComarator implements Comparator<Employee>{
+
+		@Override
+		public int compare(Employee o1, Employee o2) {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+	}
+	
+	public static Comparator<Employee> comparatorFactory(int key){
+		
+		Comparator<Employee> comp = null;
+		switch(key) {
+			case 1:{
+				comp = new NameComarator();
+				break;
+			}
+			case 2:{
+				comp = new SalaryComarator();
+				break;
+			}
+			case 3:{
+				comp = new LocationComarator();
+				break;
+			}
+			default :
+				break;
+		}
+		return comp;
+	}
+}

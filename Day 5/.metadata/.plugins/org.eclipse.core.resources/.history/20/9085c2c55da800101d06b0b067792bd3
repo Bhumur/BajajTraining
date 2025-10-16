@@ -1,0 +1,51 @@
+package com.example.demo.entity;
+
+import java.util.List;
+import java.util.Objects;
+
+public class Bank {
+	private String bankName;
+	private List<Customer> customerList;
+	public Bank(String bankName, List<Customer> customerList) {
+		super();
+		this.bankName = bankName;
+		this.customerList = customerList;
+	}
+	public Bank() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public String getBankName() {
+		return bankName;
+	}
+	public void setBankName(String bankName) {
+		this.bankName = bankName;
+	}
+	public List<Customer> getCustomerList() {
+		return customerList;
+	}
+	public void setCustomerList(List<Customer> customerList) {
+		this.customerList = customerList;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(bankName, customerList);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Bank other = (Bank) obj;
+		return Objects.equals(bankName, other.bankName) && Objects.equals(customerList, other.customerList);
+	}
+	@Override
+	public String toString() {
+		return "Bank [bankName=" + bankName + ", customerList=" + customerList + "]";
+	}
+	
+	
+}

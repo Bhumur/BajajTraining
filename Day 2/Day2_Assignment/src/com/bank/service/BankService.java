@@ -1,0 +1,63 @@
+package com.bank.service;
+
+import java.util.Arrays;
+
+import com.bank.entity.BankAccount;
+
+public class BankService {
+	BankAccount []accounts;
+	int size = 0;
+	
+	public BankService() {
+		this.accounts = new BankAccount[1];
+	}
+	
+	private void resize() {
+		BankAccount []resizedArray = new BankAccount[accounts.length * 2];
+		for(int i=0;i<this.size;i++) 
+			resizedArray[i] = accounts[i];
+		accounts = resizedArray;
+	}
+	
+	public boolean addAccount(BankAccount account) {
+		if(account==null)
+			return false;
+		if(this.size==this.accounts.length)
+			resize();
+		accounts[this.size] = account;
+		this.size++;
+		return true;
+	}
+	
+	public boolean addAllAccount(BankAccount []list) {
+		if(list==null)
+			return false;
+		for(BankAccount account : list) {
+			if(!addAccount(account))
+				return false;
+		}
+		return true;
+	}
+	
+	public BankAccount[] getAllAccount() {
+		BankAccount []list = new BankAccount[this.size];
+		for(int i=0;i<this.size;i++)
+			list[i] = this.accounts[i];
+		return list;
+	}
+	
+	public BankAccount[] getTopNAccount(int n) {
+		BankAccount []copy = new BankAccount[this.size];
+		for(int i=0;i<this.size;i++)
+			copy[i] = this.accounts[i];
+		Arrays.sort(copy);
+		BankAccount []result = new BankAccount[n];
+		for(int i=0;i<n;i++)
+			result[i] = copy[i];
+		return result;
+	}
+	
+	public int getSize() {
+		return this.size;
+	}
+}

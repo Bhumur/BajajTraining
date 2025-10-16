@@ -1,0 +1,31 @@
+package traninig;
+
+public class Application {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Student ram = new Student();
+		
+		ram.setFirstName("Bhumur");
+		ram.setLastName("Agrawal");
+		ram.setMarkScored(5000);
+		
+		Address addr = new Address();
+		addr.setAddressLine1("29-a");
+		addr.setAddressLine2("sanagam Colony");
+		addr.setCity("Jaipur");
+		addr.setPinCode(302017);
+		
+		ram.setAddress(addr);
+		
+		System.out.println(ram.toString());
+		StudentService studentService = new StudentService();
+		
+		System.out.println(studentService.assignGrade(ram));
+		
+		
+		Confrence c = new Confrence();
+		c.printSpreakerDetails();
+	}
+
+}

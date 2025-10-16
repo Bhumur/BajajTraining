@@ -1,0 +1,18 @@
+package traninig;
+
+public class Confrence {
+	
+	private String confrenceTitle;
+	private String location;
+	private Speaker[] speakers;
+	
+	public Confrence() {
+		
+	}
+	
+	
+	// Can be done but it will give ambigutiy
+//	public void Confrence() {
+//		
+//	}
+}

@@ -1,0 +1,49 @@
+package com.example.demo;
+
+import com.example.demo.model.Book;
+
+public class BookRepository implements Repository {
+
+	private Book[] books;
+	private int size = 0;
+	
+	public BookRepository() {
+		super();
+		this.books = new Book[1];
+	}
+	
+	public void resize() {
+		Book[] resized = new Book[this.books.length * 2];
+		for(int i=0;i<size;i++) {
+			resized[i] = this.books[i];
+		}
+		books = resized;
+	}
+	
+	@Override
+	public boolean save(Book book){
+		if(book==null)
+			return false;
+		books[size] = book;
+		return true;
+	}
+
+	@Override
+	public Book[] findAll() {
+		Book[] allBooks = new Book[size];
+		return null;
+	}
+
+	@Override
+	public boolean remove(Book book) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Book findByName(String bookName) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

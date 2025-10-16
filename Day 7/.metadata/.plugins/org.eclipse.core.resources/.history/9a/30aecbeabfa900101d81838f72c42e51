@@ -1,0 +1,20 @@
+package com.example.demo;
+
+import com.example.demo.annotation.Invoker;
+import com.example.demo.annotation.Table;
+
+public class ApplicationAnnotation {
+
+	public static void main(String[] args) {
+
+		Book java = new Book();
+		Class<?> myClass = java.getClass();
+//		Table table = myClass.getAnnotation(Table.class);
+//		System.out.println(table.name());
+		
+		
+		Invoker methodLevel = myClass.getAnnotation(Invoker.class);
+		System.out.println(methodLevel.value());
+	}
+
+}

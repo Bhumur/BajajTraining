@@ -1,0 +1,44 @@
+package com.example.demo.module.two;
+
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ExecuterApplication {
+
+	public static void singleThread(PrintStringTask []tasks) {
+		ExecutorService executor = Executors.newSingleThreadExecutor();
+		
+		for(PrintStringTask eachTask : tasks) {
+			
+			executor.submit(eachTask);
+		}
+		
+		executor.shutdown();
+	}
+	
+	public static void fixedThread(PrintStringTask []tasks) {
+		ExecutorService executor = Executors.newFixedThreadPool(6);
+		
+		for(PrintStringTask eachTask : tasks) {
+			
+			executor.submit(eachTask);
+		}
+		executor.shutdown();
+	}
+	
+	public static void main(String[] args) {
+		
+		PrintStringTask []tasks = new PrintStringTask[5];
+		
+		tasks[0] = new PrintStringTask("1", "11");
+		tasks[1] = new PrintStringTask("2", "22");
+		tasks[2] = new PrintStringTask("3", "33");
+		tasks[3] = new PrintStringTask("4", "44");
+		tasks[4] = new PrintStringTask("5", "55");
+		
+		singleThread(tasks);
+		
+		
+	}
+
+}

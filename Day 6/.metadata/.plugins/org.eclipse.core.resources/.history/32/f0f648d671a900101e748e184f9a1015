@@ -1,0 +1,38 @@
+package com.example.demo;
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		String filePath = "D:\\Bajaj\\Traning\\Day 6\\data.csv";
+        String line;
+        List<LogMessages> list = new ArrayList<>();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            while ((line = br.readLine()) != null) {
+                String[] values = line.split(",");
+                int id = Integer.parseInt(values[0]);
+                LocalDateTime dateTime = LocalDateTime.parse(values[1]);
+            	String location = values[2];
+            	Severity severity = Severity.valueOf(values[3]);
+            	String cause = values[4];
+                LogMessages message = new LogMessages(id, dateTime, location, severity, cause);
+                list.add(message);
+                System.out.println(message);
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        
+	}
+
+}

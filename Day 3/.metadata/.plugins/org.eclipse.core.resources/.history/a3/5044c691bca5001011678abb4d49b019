@@ -1,0 +1,14 @@
+package com.example.demo;
+
+import com.example.demo.model.Book;
+/*
+ * @author bhumur
+ * @version 1.0
+ * Repository To Manage CRUD Operations on the Array
+ */
+public interface Repository {
+	public boolean save(Book book);
+	public Book[] findAll();
+	public boolean remove(Book book);
+	public Book findById(int bookNumber);
+}

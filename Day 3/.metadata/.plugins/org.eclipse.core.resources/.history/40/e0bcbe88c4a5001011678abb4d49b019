@@ -1,0 +1,43 @@
+package com.example.demo;
+
+import com.example.demo.model.Book;
+/**
+ * @author bhumur
+ * @version 1.0
+ * Repository To Manage CRUD Operations on the Array
+ */
+public interface Repository {
+	
+	/**
+	 * Array Size will be grow automatically as elements are added
+	 * @param Book
+	 * @return boolean value to denote element is added or not
+	 */
+	public boolean save(Book book);
+	
+	/**
+	 * Return all the books in array
+	 */
+	public Book[] findAll();
+	
+	/**
+	 * Remove the Book from the Array
+	 * @param Book
+	 * @return boolean on successful deletion
+	 */
+	public boolean remove(Book book);
+	
+	/**
+	 * Find Book By ID
+	 * @param Numer of Book
+	 * @return Book object
+	 */
+	public Book findByNumber(int bookNumber);
+	
+	/**
+	 * Find Book By Name
+	 * @param Name of Book
+	 * @return Book object
+	 */
+	public Book findByName(String bookName);
+}

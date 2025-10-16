@@ -1,0 +1,20 @@
+package com.example.demo.module.one;
+
+public class PrintStringTask implements Runnable{
+
+	private String str1;
+	private String str2;
+
+	
+	public PrintStringTask(String string1, String string2) {
+		this.str1 = string1;
+		this.str2 = string2;
+	}
+
+	@Override
+	public void run() {
+		
+		PrintString.print(str1, str2);
+	}
+
+}

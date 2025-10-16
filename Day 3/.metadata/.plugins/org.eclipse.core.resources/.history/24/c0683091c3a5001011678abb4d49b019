@@ -1,0 +1,16 @@
+package com.example.demo;
+
+import com.example.demo.service.BookService;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		Repository repo = new BookRepository();
+		
+		BookService service = new BookService(repo);
+		
+		
+	}
+
+}

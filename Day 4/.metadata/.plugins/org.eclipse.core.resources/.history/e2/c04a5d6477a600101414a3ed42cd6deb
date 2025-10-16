@@ -1,0 +1,86 @@
+package com.example.demo.module.three;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import com.example.demo.exception.ElementsAlreadyExistException;
+import com.example.demo.exception.NotFoundException;
+import com.example.demo.ifaces.EmployeeRepository;
+
+public class EmployeeRepoImpl implements EmployeeRepository<Employee> {
+	List<Employee> employees;
+	
+	public EmployeeRepoImpl() {
+		this.employees = new ArrayList<>();
+	}
+	
+	@Override
+	public boolean add(Employee emp) throws ElementsAlreadyExistException {
+		for(Employee employee : this.employees) {
+			if(employee.equals(emp)) {
+				throw new ElementsAlreadyExistException();
+			}
+		}
+		if(emp==null)
+			return false;
+		employees.add(emp);
+		return true;
+	}
+
+	@Override
+	public Employee findById(int id) throws NotFoundException {
+		Employee result = null;
+		for(Employee emp : this.employees) {
+			if(emp.getEmployeeId()==id) {
+				result = emp;
+				break;
+			}
+		}
+		if(result==null)
+			throw new NotFoundException();
+		return result;
+	}
+
+	@Override
+	public boolean remove(int id) throws NotFoundException {
+		Employee result = null;
+		for(Employee emp : this.employees) {
+			if(emp.getEmployeeId()==id) {
+				result = emp;
+				break;
+			}
+		}
+		if(result == null)
+			throw new NotFoundException();
+		employees.remove(result);
+		return false;
+	}
+
+	@Override
+	public Collection<Employee> findAll() {
+		return employees;
+	}
+
+	@Override
+	public Collection<Employee> sortedList(Comparator<Employee> comp) {
+		Collections.sort(employees, comp);
+		return employees;
+	}
+
+	@Override
+	public Collection<Employee> findByEmployeeName(String name) {
+		ArrayList<Employee> result = new ArrayList<>();
+		for(Employee emp : this.employees) {
+			if(emp.getEmployeeName().equals(name)) {
+				result.add(emp);
+			}
+		}
+		if(result.size() == 0)
+			throw new NotFoundException();
+		return false;
+	}
+
+}

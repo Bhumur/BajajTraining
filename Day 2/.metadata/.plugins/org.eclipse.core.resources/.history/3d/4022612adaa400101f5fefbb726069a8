@@ -1,0 +1,17 @@
+package com.example.demo.service;
+
+import com.example.demo.Student;
+
+public class StudentService {
+
+	//Passing an Object to the method 
+	//
+	
+	public Student assignGrade(Student student) {
+		if(student.getMarkScored()>80)
+			student.setGrade("A");
+		else
+			student.setGrade("B");
+		return student;
+	}
+}

@@ -1,0 +1,24 @@
+package com.example.demo.streams;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
+public class BloodGroupRepoImpl {
+
+	public List<BloodDonor> findAll(){
+		List<BloodDonor> donorList = new ArrayList<>();
+		
+		donorList.add(new BloodDonor(101, "Bhumur", 54, LocalDate.of(2024, 2, 14), BloodGroup.ABNEG, 94595282566L));
+		donorList.add(new BloodDonor(102, "Kambli", 54, LocalDate.of(2024, 2, 14), BloodGroup.ABNEG, 94595282566L));
+		donorList.add(new BloodDonor(103, "Rahul", 54, LocalDate.of(2024, 2, 14), BloodGroup.ABNEG, 94595282566L));
+		donorList.add(new BloodDonor(104, "Kholi", 54, LocalDate.of(2024, 2, 14), BloodGroup.ABNEG, 94595282566L));
+		donorList.add(new BloodDonor(105, "Rohit", 54, LocalDate.of(2024, 2, 14), BloodGroup.ABNEG, 94595282566L));
+		
+		
+		return donorList.
+		
+	}
+	
+	
+}

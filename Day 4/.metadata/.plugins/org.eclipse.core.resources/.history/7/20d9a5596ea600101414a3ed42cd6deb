@@ -1,0 +1,6 @@
+package com.example.demo.ifaces;
+
+public class Repositry<T> {
+	
+	boolean add(T t);
+}

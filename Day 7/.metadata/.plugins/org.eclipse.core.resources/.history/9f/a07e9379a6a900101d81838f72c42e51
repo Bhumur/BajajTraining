@@ -1,0 +1,48 @@
+package com.example.demo;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+public class FlatMapAndPartitionBy {
+
+	public static void main(String[] args) {
+
+		List<Integer> marks1 = Arrays.asList(90, 80, 70, 60);
+		List<Integer> marks2 = Arrays.asList(50, 40, 30, 20);
+		
+		List<List<Integer>> combineList = new ArrayList<>();
+		
+		combineList.add(marks1);
+		combineList.add(marks2);
+		
+		List<Integer> mappedList = combineList.stream()
+									.flatMap(e -> e.stream())
+									.collect(Collectors.toList());
+									
+		mappedList.forEach(System.out::println);
+		
+		List<OrderBook> book = new ArrayList<>();
+		List<Order> order = new ArrayList<>();
+		
+		order.add(new Order(1, 10, "Pencile"));
+		order.add(new Order(2, 20, "Pen"));
+		order.add(new Order(3, 30, "Book"));
+		order.add(new Order(4, 40, "ten"));
+		order.add(new Order(5, 50, "snsn"));
+		
+		OrderBook obook = new OrderBook(LocalDate.parse("2005-08-16"), order);
+		book.add(obook);
+		
+		OrderBook obook1 = new OrderBook(LocalDate.parse("2006-08-16"), order);
+		book.add(obook1);
+		
+		List<Order> orders = book.stream()
+								.flatMap(e -> e.orders)
+								.collect(Collectors.toList());
+		
+	}
+
+}

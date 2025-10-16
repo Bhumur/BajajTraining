@@ -1,0 +1,9 @@
+package com.example.demo;
+
+public class LifeInsurance extends Insurance {
+	private int policyNumber;
+	private String policyHolderName;
+	private double policyAmount;
+	
+	
+}

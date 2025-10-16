@@ -1,0 +1,13 @@
+package com.example.demo.ifaces;
+
+public class UsdToInrConvertor implements Function {
+
+	
+	
+	@Override
+	public boolean test() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+}

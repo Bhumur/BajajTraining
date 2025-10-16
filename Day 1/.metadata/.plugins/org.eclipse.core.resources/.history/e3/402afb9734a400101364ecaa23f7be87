@@ -1,0 +1,16 @@
+package traninig;
+
+public class Application {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		Student ram = new Student();
+		
+		ram.setFirstName("Bhumur");
+		ram.setLastName("Agrawal");
+		ram.setMarkScored(5000);
+		
+		System.out.println(ram.toString());
+	}
+
+}

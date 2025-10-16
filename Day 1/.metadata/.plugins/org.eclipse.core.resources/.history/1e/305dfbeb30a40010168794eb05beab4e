@@ -1,0 +1,9 @@
+package traninig;
+
+public class Student {
+	
+	String firstName;
+	String lastName;
+	double markScored;
+	
+}

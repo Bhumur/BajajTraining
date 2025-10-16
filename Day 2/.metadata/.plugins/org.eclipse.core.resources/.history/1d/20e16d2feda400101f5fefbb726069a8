@@ -1,0 +1,26 @@
+package com.example;
+
+import com.example.demo.Book;
+import com.example.demo.service.BookService;
+
+public class BookApplication {
+	
+	public static void printBooks(Book[] books) {
+		for(Book book : books)
+				System.out.println(book);
+	}
+	
+	public static void main(String args[]) {
+		BookService service = new BookService();
+		
+		String choice = "add";
+		
+		switch(choice.toLowerCase()) {
+		case "add":
+			
+			break;
+		default :
+			break;
+		}
+	}
+}

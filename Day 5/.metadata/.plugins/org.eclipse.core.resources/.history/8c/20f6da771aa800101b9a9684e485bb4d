@@ -1,0 +1,119 @@
+package com.example.demo.entity.repositry;
+
+import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
+
+import com.example.demo.entity.Customer;
+import com.example.demo.entity.utils.Status;
+import com.mysql.cj.protocol.ResultStreamer;
+
+public class CustomerRepoImpl implements CrudRepository<Customer> {
+
+	private Connection con;
+	
+	private String insertSql = "insert into customer values(?,?,?,?,?);";
+	private String selectSql = "select * from customer;";
+	private String findByIdSql = "select * from customer where customerid = ?";
+	private String removeSql = "delete from customer where customerid = ?";
+	
+	public CustomerRepoImpl(Connection con) {
+		this.con = con;
+	}
+	
+	@Override
+	public boolean add(Customer customer) {
+		boolean result = false;
+		try(PreparedStatement query = con.prepareStatement(insertSql)) {
+			query.setInt(1, customer.getCustomerId());
+			query.setString(2, customer.getCustomerName());
+			query.setDate(3, Date.valueOf(customer.getBillDate()));
+			query.setDouble(4, customer.getAmountDue());
+			query.setString(5, customer.getPaymentStatus().toString());
+			result = query.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Customer findById(int id) {
+		Customer customer = null;
+		try (PreparedStatement query = con.prepareStatement(findByIdSql)){
+			query.setInt(1, id);
+			try(ResultSet rs = query.executeQuery()){
+				if(rs.next())
+					customer = rowMapper(rs);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return customer;
+	}
+
+	@Override
+	public boolean remove(int id) {
+		boolean result = false;
+		try (PreparedStatement query = con.prepareStatement(removeSql)){
+			query.setInt(1, id);
+			result = query.execute();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	@Override
+	public Collection<Customer> findAll() {
+		List<Customer> customers = new ArrayList<>();
+		try (PreparedStatement query = con.prepareStatement(selectSql)){
+			Customer customer = null;
+			try(ResultSet rs = query.executeQuery()){
+				while(rs.next()) {
+					customer = rowMapper(rs);
+					customers.add(customer);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return customers;
+	}
+	
+	public boolean addAll(Customer ...customers) {
+		try {
+			con.setAutoCommit(false);
+			
+			
+			
+			con.commit();
+			con.setAutoCommit(true);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
+	
+	
+	private Customer rowMapper(ResultSet rs) {
+		Customer customer = null;
+		try {
+			int customerId = rs.getInt("customerid");
+			String customerName = rs.getString("customername");
+			Status customerStatus = Status.valueOf(rs.getString("paymentstatus"));
+			LocalDate billDate = rs.getDate("billdate").toLocalDate();
+			double ammountDue = rs.getDouble("amountdue");
+			customer = new Customer(customerId, customerName, billDate, ammountDue, customerStatus);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return customer;
+	}
+	
+}

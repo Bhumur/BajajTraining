@@ -1,0 +1,34 @@
+package com.example.demo;
+
+
+public class VehicleInsurance extends Insurance {
+	
+	private int engineCapacity;
+	
+	
+	
+	public VehicleInsurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public VehicleInsurance(int policyNumber, String policyHolderName, double policyAmount, int engineCapacity) {
+		super(policyNumber, policyHolderName, policyAmount);
+		this.engineCapacity = engineCapacity;
+	}
+
+
+
+	@Override
+	public double calculatePremium() {
+		return 101.1*this.engineCapacity ;
+	}
+
+	@Override
+	public String toString() {
+		return super.toString() + "VehicleInsurance [engineCapacity=" + engineCapacity + "]";
+	}
+	
+}

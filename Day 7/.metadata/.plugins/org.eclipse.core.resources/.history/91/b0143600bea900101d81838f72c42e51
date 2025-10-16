@@ -1,0 +1,14 @@
+package com.example.demo;
+
+public class ApplicationAnnotation {
+
+	public static void main(String[] args) {
+
+		Book java = new Book();
+		
+		Class<?> myClass = java.getClass();
+		
+		System.out.println(myClass.getAnnotation(Book.class).getClass().getName());
+	}
+
+}

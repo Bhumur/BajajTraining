@@ -1,0 +1,81 @@
+package com.bank.entity;
+
+import java.util.Objects;
+
+public class BankAccount {
+	private int accountNumber;
+	private String accountHolderName;
+	private double accountBalance;
+	
+	public BankAccount() {
+		super();
+	}
+	
+	public BankAccount(int accNumber) {
+		super();
+		this.accountNumber = accNumber;
+	}
+	
+	public BankAccount(int accNumber, String accHolderName) {
+		super();
+		this.accountNumber = accNumber;
+		this.accountHolderName = accHolderName;
+	}
+	
+	public BankAccount(int accNumber, String accHolderName, double accBalance) {
+		super();
+		this.accountNumber = accNumber;
+		this.accountHolderName = accHolderName;
+		this.accountBalance = accBalance;
+	}
+
+	public int getAccountNumber() {
+		return accountNumber;
+	}
+
+	public void setAccountNumber(int accountNumber) {
+		this.accountNumber = accountNumber;
+	}
+
+	public String getAccountHolderName() {
+		return accountHolderName;
+	}
+
+	public void setAccountHolderName(String accountHolderName) {
+		this.accountHolderName = accountHolderName;
+	}
+
+	public double getAccountBalance() {
+		return accountBalance;
+	}
+
+	public void setAccountBalance(double accountBalance) {
+		this.accountBalance = accountBalance;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(accountBalance, accountHolderName, accountNumber);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		BankAccount other = (BankAccount) obj;
+		return Double.doubleToLongBits(accountBalance) == Double.doubleToLongBits(other.accountBalance)
+				&& Objects.equals(accountHolderName, other.accountHolderName) && accountNumber == other.accountNumber;
+	}
+
+	@Override
+	public String toString() {
+		return "BankAccount [accountNumber=" + accountNumber + ", accountHolderName=" + accountHolderName
+				+ ", accountBalance=" + accountBalance + "]";
+	}
+	
+	
+}

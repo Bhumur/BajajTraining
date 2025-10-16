@@ -1,0 +1,21 @@
+package com.bank.app;
+
+import com.bank.entity.BankAccount;
+import com.bank.service.BankService;
+
+public class Application {
+
+	public static void main(String[] args) {
+		BankService service = new BankService();
+		
+		int option = 1;
+		
+		do {
+			System.out.println("Options :- ");
+			System.out.println("1. Make Account with only Account Number.");
+			System.out.println("2. Make Account with only Account Number and Name.");
+			System.out.println("3. Make Account with all details.");
+		}while(option!=0);
+	}
+
+}

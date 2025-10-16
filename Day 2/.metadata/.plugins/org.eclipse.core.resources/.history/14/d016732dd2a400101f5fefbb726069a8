@@ -1,0 +1,16 @@
+package com.example;
+
+import com.example.demo.Student;
+import com.example.demo.service.StudentService;
+
+public class Application {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StudentService service = new StudentService();
+		
+		Student ram = new Student(100, "Ram", "Agrawal", 80);
+	}
+
+}

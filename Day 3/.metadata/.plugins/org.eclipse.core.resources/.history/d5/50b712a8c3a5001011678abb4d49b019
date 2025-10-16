@@ -1,0 +1,21 @@
+package com.example.demo;
+
+import com.example.demo.model.Book;
+import com.example.demo.service.BookService;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		Repository repo = new BookRepository();
+		
+		BookService service = new BookService(repo);
+		
+		service.saveBook(new Book(101, "Java", 100.0));
+		service.saveBook(new Book(102, "C++", 101.1));
+		service.saveBook(new Book(103, "DotNet", 102.2));
+		service.
+		
+	}
+
+}

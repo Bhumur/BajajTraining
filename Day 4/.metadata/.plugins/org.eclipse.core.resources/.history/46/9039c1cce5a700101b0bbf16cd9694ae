@@ -1,0 +1,38 @@
+package com.example.demo.repository;
+
+import java.io.ObjectInputStream.GetField;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.List;
+
+import com.example.demo.Grocery;
+import com.example.demo.Product;
+import com.example.demo.Textile;
+import com.example.demo.exception.ElementsAlreadyExistException;
+import com.example.demo.exception.NotFoundException;
+
+public class TextileRepoImpl extends ProductRepoImpl implements TextileRepositry {
+
+	@Override
+	public boolean update(int id, Product t, Collection<Product> list) throws NotFoundException {
+		super.update(id, t, list);
+		Textile product = (Textile)super.findById(id, list);
+		product.setFacbric(((Textile)t).getFacbric());
+		return true;
+	}
+
+
+	@Override
+	public Collection<Textile> findByFabric(String fabric, Collection<Product> list) {
+		List<Textile> resultList = new ArrayList<>();
+		for(Product product : list) {
+			Textile textile = (Textile)product;
+			if((textile.getFacbric().equals(fabric))
+				resultList.add(textile);
+		}
+		return resultList;
+	}
+
+}

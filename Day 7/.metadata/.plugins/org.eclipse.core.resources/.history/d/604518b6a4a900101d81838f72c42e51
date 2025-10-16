@@ -1,0 +1,19 @@
+package com.example.demo;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+public class FlatMapAndPartitionBy {
+
+	public static void main(String[] args) {
+
+		List<Integer> marks1 = Arrays.asList(90, 80, 70, 60);
+		List<Integer> marks2 = Arrays.asList(50, 40, 30, 20);
+		
+		List<List<Integer>> combineList = new ArrayList<>();
+		
+		
+	}
+
+}

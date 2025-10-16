@@ -1,0 +1,25 @@
+package com.example.demo;
+
+import java.sql.*;
+import java.util.logging.*;
+
+import com.training.recodes.CreditCard;
+
+public class Application {
+
+	public static void main(String[] args) {
+		Logger log = Logger.getAnonymousLogger();
+		log.info("I am using Logger");
+		
+		CreditCard AXIScard = new CreditCard(303030, "BHumur", 53335);
+		
+		System.out.println(AXIScard.cardHolderName() + " " + AXIScard.amount());
+		
+		
+CreditCard HDFCcard = new CreditCard(303030, "BHumur", 53335);
+		
+		System.out.println(AXIScard.cardHolderName() + " " + AXIScard.amount());
+		
+	}
+
+}

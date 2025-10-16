@@ -1,0 +1,25 @@
+package com.example.demo;
+
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+
+public class EffectiveFinal {
+
+	public void learnEffectiveFinal() {
+		final int mark = 90;
+		
+		Predicate<Integer> checkMark = (actual) -> {
+//			mark+=10; // effectively final
+			return actual > 90;
+		};
+		
+		Consumer<String> consumer = (e) -> {
+			System.out.println(e);
+			System.out.println(this.getClass().getName());
+		};
+		consumer.accept("Use of this keyword");
+		
+		
+	}
+}
+

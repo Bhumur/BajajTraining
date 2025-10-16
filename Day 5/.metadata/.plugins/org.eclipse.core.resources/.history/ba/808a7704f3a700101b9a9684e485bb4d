@@ -1,0 +1,4 @@
+datasource.url=jdbc:mysql://loaclhost:3306/test
+datasource.username=root
+datasource.password=root
+datasource.driver=com.mysql.cj.jdbc.Driver

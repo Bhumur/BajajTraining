@@ -1,0 +1,25 @@
+package com.example;
+
+import com.example.demo.Student;
+import com.example.demo.service.StudentService;
+
+public class Application {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		StudentService service = new StudentService();
+		
+		Student ram = new Student(100, "Ram", "Agrawal", 80);
+		
+//		Student clonedRam = ram.clone();
+		
+		System.out.println("Before Method Called ===> " + ram.toString());
+		
+		service.assignGrade(ram);
+		
+		System.out.println("After Method Called ===> " + ram.toString());
+
+	}
+
+}

@@ -1,0 +1,16 @@
+package traninig;
+
+public class StudentService {
+	
+	/*
+	 * Take the Student as Argument
+	 * if the markScore greater than 80 assign A else B
+	 */
+	
+	public String assignGrade(Student s) {
+		char grade = 'B';
+		if(s.getMarkScored()>80)
+			grade = 'A';
+		return grade;
+	}
+}

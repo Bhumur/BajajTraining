@@ -1,0 +1,48 @@
+package com.example.demo;
+
+import java.time.LocalDate;
+
+public class LifeInsurance extends Insurance {
+	
+	private LocalDate dateOfBirth;
+	
+	
+	
+	public LifeInsurance() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+
+
+	public LifeInsurance(int policyNumber, String policyHolderName, double policyAmount, LocalDate dob) {
+		super(policyNumber, policyHolderName, policyAmount);
+		this.dateOfBirth = dob;
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+
+
+
+	public LocalDate getDateOfBirth() {
+		return dateOfBirth;
+	}
+
+
+
+	public void setDateOfBirth(LocalDate dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
+	}
+
+	public int getAge() {
+		LocalDate today = LocalDate.now();
+		int age = today.getDayOfYear()-this.dateOfBirth.getDayOfYear();
+	}
+
+	@Override
+	public double calculatePremium() {
+		return 0.0;
+	}
+	
+}

@@ -1,0 +1,66 @@
+package com.example.demo;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+
+class Order{
+	int orderId;
+	int orderValue;
+	String customerName;
+	public Order() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Order(int orderId, int orderValue, String customerName) {
+		super();
+		this.orderId = orderId;
+		this.orderValue = orderValue;
+		this.customerName = customerName;
+	}
+	@Override
+	public String toString() {
+		return "Order [orderId=" + orderId + ", orderValue=" + orderValue + ", customerName=" + customerName + "]";
+	}
+	
+}
+
+class orderBook{
+	LocalDate date;
+	List<Order> orders;
+}
+
+public class FlatMapAndPartitionBy {
+
+	public static void main(String[] args) {
+
+		List<Integer> marks1 = Arrays.asList(90, 80, 70, 60);
+		List<Integer> marks2 = Arrays.asList(50, 40, 30, 20);
+		
+		List<List<Integer>> combineList = new ArrayList<>();
+		
+		combineList.add(marks1);
+		combineList.add(marks2);
+		
+		List<Integer> mappedList = combineList.stream()
+									.flatMap(e -> e.stream())
+									.collect(Collectors.toList());
+									
+		mappedList.forEach(System.out::println);
+		
+		List<orderBook> book = new ArrayList<>();
+		List<Order> order = new ArrayList<>();
+		
+		order.add(new Order(1, 10, "Pencile"));
+		order.add(new Order(2, 20, "Pen"));
+		order.add(new Order(3, 30, "Book"));
+		order.add(new Order(4, 40, "ten"));
+		order.add(new Order(5, 50, "snsn"));
+		
+		book.add(order);
+		
+	}
+
+}

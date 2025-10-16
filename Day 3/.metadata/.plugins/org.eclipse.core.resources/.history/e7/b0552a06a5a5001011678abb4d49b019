@@ -1,0 +1,37 @@
+package com.exercise.automobiles;
+
+import com.exercise.iface.Automobile;
+
+public class PulsarBike implements Automobile {
+
+	private String color;
+	private double price;
+	private String model;
+	
+	
+	
+	public PulsarBike(String color, double price, String model) {
+		super();
+		this.color = color;
+		this.price = price;
+		this.model = model;
+	}
+
+	@Override
+	public String getColor() {
+		// TODO Auto-generated method stub
+		return this.color;
+	}
+
+	@Override
+	public double getPrice() {
+		// TODO Auto-generated method stub
+		return this.price;
+	}
+
+	@Override
+	public String getModel() {
+		// TODO Auto-generated method stub
+		return this.model;
+	}
+}

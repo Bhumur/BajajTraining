@@ -1,0 +1,20 @@
+package com.example.demo;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
+public class OptionalUsage {
+	
+	public Map<Integer, String> list;
+
+	public OptionalUsage() {
+		super();
+		this.list = Arrays.asList("Aman","Ram","Shayam","Bhawan");
+	}
+	
+	public String searchName(String name) {
+		return this.list.
+	}
+	
+}

@@ -1,0 +1,23 @@
+package com.exercise.automobiles;
+
+import com.exercise.iface.Automobile;
+
+public class ShowRoom {
+	Automobile vehicle;
+	
+	public Automobile autoFactory(int choice) {
+		if(choice==1)
+			return getMarutiCar(print, choice, print)
+	}
+	
+	public MarutiCar getMarutiCar(String color, double price, String model) {
+		return new MarutiCar(color, price, model);
+	}
+	
+	public PulsarBike getPulsarBike(String color, double price, String model) {
+		return new PulsarBike(color, price, model);
+	}
+	public String printQuotation() {
+		return 
+	}
+}

@@ -1,0 +1,20 @@
+package com.example.demo;
+
+public class IdGenerator {
+	
+	private static int count = 1;
+	private static IdGenerator;
+	
+	private IdGenerator() {
+		this.count++;
+	}
+	
+	public static IdGenerator newInstance() {
+		return new IdGenerator();
+	}
+	
+	public int getNewId() {
+		return count++;
+	}
+	
+}

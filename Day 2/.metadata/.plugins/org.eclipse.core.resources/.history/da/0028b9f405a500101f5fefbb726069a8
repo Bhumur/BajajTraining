@@ -1,0 +1,14 @@
+package com.example.demo;
+
+import java.time.LocalDate;
+
+public class VehicleInsurance extends Insurance {
+	
+	private LocalDate dateOfManufacture;
+	
+	@Override
+	public double calculatePremium() {
+		return 0.0;
+	}
+
+}

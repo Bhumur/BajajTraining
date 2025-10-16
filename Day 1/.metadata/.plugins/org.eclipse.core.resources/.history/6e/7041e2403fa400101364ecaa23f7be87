@@ -1,0 +1,10 @@
+package traninig;
+
+public class Confrence {
+	
+	private String confrenceTitle;
+	private String location;
+	private Speaker[] speakers;
+	
+	
+}

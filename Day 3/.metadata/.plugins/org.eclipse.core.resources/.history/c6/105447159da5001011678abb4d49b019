@@ -1,0 +1,11 @@
+package com.example.demo.ifaces;
+
+public class FarenToCel implements Function {
+
+	@Override
+	public double apply() {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+
+}

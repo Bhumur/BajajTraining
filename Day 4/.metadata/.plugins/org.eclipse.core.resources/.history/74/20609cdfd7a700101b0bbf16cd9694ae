@@ -1,0 +1,61 @@
+package com.example.demo.repository;
+
+import java.util.Collection;
+import java.util.Comparator;
+import java.util.List;
+
+import com.example.demo.Product;
+import com.example.demo.exception.ElementsAlreadyExistException;
+import com.example.demo.exception.NotFoundException;
+
+public class ProductRepoImpl implements ProductRepositry{
+
+	@Override
+	public boolean add(Product t, Collection<Product> list) throws ElementsAlreadyExistException, NotFoundException {
+		return list.add(t);
+	}
+
+	@Override
+	public boolean update(int id, Product newProduct, Collection<Product> list) throws NotFoundException {
+		Product oldProduct = findById(id, list);
+		if(oldProduct==null)
+			throw new NotFoundException();
+		oldProduct.setProductName(newProduct.getProductName());
+		oldProduct.setProductPrice(newProduct.getProductPrice());
+		return false;
+	}
+
+	@Override
+	public boolean remove(int id, Collection<Product> list) throws NotFoundException {
+		return list.remove(findById(id, list));
+	}
+
+	@Override
+	public Product findById(int id, Collection<Product> list) throws NotFoundException {
+		for(Product product : list) {
+			if(product.getProductId() == id) {
+				return product;
+			}
+		}
+		return null;
+	}
+
+	@Override
+	public Collection<Product> findByName(String name, Collection<Product> list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Product> findAll(Collection<Product> list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Product> getSortedList(Comparator<Product> comp, List<Product> list) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+}

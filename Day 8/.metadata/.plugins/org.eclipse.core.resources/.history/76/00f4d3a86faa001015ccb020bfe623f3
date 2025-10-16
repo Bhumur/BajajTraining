@@ -1,0 +1,67 @@
+package com.example.demo;
+
+import java.sql.*;
+import java.util.logging.*;
+
+import com.training.recodes.CreditCard;
+
+public class Application {
+
+	public static void switchCaseVersionOne(String choice) {
+		String result = switch(choice) {
+		case "student" -> "Best Student is Ram";
+		case "employee" -> "Best Employee is Shyam";
+		default -> throw new IllegalArgumentException("Unexpected value : " + choice);
+ 		};
+		System.out.println(result);
+	}
+	
+	public static void switchCaseVersionExpression(String choice) {
+		
+	}
+	
+	public static void switchCaseVersionYield(Status status) {
+		String str = switch(status) {
+		case PENDING : 
+			yield "Payment Is Pending";
+		case FAILED :
+			yield "Payment Is Failed";
+		default : throw new IllegalArgumentException();
+		};
+		System.out.println(str);
+	}
+	
+	public static void main(String[] args) {
+//		Logger log = Logger.getAnonymousLogger();
+//		log.info("I am using Logger");
+		
+		CreditCard AXIScard = new CreditCard(303030, "BHumur", 53335);
+		
+		//System.out.println(AXIScard.cardHolderName() + " " + AXIScard.amount());
+		
+		
+		CreditCard HDFCcard = new CreditCard(303030, "Bhhumur", 53335);
+		
+		//System.out.println(HDFCcard.cardHolderName() + " " + HDFCcard.amount());
+		
+		//System.out.println(AXIScard.equals(HDFCcard));
+		
+//		Student one = new Student(11, "name");
+//		Student two = new Student(11, "name");
+//		
+//		System.out.println(one.equals(two));
+		
+		
+//		switchCaseVersionOne("student");
+//		switchCaseVersionOne("employee");
+//		switchCaseVersionOne("dog");
+		
+		switchCaseVersionYield(Status.PENDING);
+		switchCaseVersionYield(Status.FAILED);
+		
+		System.out.println("sasaqs");
+		switchCaseVersionYield(Status.DONE);
+		
+	}
+
+}

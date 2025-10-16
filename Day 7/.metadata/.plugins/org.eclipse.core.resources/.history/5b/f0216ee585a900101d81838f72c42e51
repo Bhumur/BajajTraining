@@ -1,0 +1,9 @@
+package com.example.demo;
+
+public class EffectiveFinal {
+
+	public void learnEffectiveFinal() {
+		int marks = 90;
+	}
+}
+

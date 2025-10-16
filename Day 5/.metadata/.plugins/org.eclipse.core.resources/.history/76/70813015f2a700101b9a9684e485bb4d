@@ -1,0 +1,28 @@
+package com.example.demo.utils;
+
+import java.sql.*;
+import java.util.ResourceBundle;
+
+public class ConnectionUtils {
+	
+	public static Connection getMySqlConnection() {
+		
+		Connection connection = null;
+		
+		try {
+			
+			ResourceBundle bundle = ResourceBundle.getBundle("application");
+			connection = DriverManager.getConnection(null);
+		} catch (Exception e) {
+			
+			e.printStackTrace();
+		}
+		
+		return connection;
+	}
+	
+	public static Connection getPostgressConnection() {
+		return null;
+	}
+	
+}

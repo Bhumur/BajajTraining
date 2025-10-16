@@ -1,0 +1,12 @@
+package com.bank.service;
+
+import com.bank.entity.BankAccount;
+
+public class BankService {
+	BankAccount []accounts;
+	int size = 0;
+	
+	public BankService() {
+		this.accounts = new BankAccount[1];
+	}
+}

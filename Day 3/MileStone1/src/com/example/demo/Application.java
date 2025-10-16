@@ -1,0 +1,47 @@
+package com.example.demo;
+
+import java.util.Scanner;
+
+import com.example.demo.exception.RangeCheckException;
+import com.example.demo.model.Book;
+import com.example.demo.service.BookService;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		Repository repo = new BookRepository();
+		
+		BookService service = new BookService(repo);
+		
+		try(Scanner scan = new Scanner(System.in)) {
+			service.saveBook(new Book(101, "Java", 100.0));
+			service.saveBook(new Book(102, "C++", 101.1));
+			service.saveBook(new Book(103, "DotNet", 102.2));
+			System.out.println(service.removeBook(new Book(101, "Java", 100.0)));
+			System.out.println();
+			Book []books = service.getAllBooks();
+			for(Book book : books)
+				System.out.println(book);
+			System.out.println(service.getBookByName("Java"));
+			System.out.println(service.getBookByName("C++"));
+			System.out.println(service.getBookByNuber(103));
+			
+			System.out.print("Book Number : ");
+			int bookNumber = scan.nextInt();
+			scan.nextLine();
+			System.out.print("Book Name : ");
+			String bookName = scan.nextLine();
+			System.out.print("Book Rate Per Unit : ");
+			double ratePerUnit = scan.nextDouble();
+			
+			service.saveBook(new Book(bookNumber, bookName, ratePerUnit));
+			
+			
+		} catch (RangeCheckException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+}

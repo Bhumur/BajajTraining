@@ -1,0 +1,10 @@
+package com.example.demo.entity.repositry;
+
+import java.util.Collection;
+
+public interface CrudRepository {
+	boolean add(T t) ;
+	T findById(int id) ;
+	boolean remove(int id) throws NotFoundException;
+	Collection<T> findAll();
+}

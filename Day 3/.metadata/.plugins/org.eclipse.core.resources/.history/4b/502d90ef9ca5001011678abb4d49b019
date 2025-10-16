@@ -1,0 +1,10 @@
+package com.example.demo.ifaces;
+
+public interface Function {
+	
+	int MAX_INT = 20;
+	
+	public double apply() {
+		return 101;
+	}
+}

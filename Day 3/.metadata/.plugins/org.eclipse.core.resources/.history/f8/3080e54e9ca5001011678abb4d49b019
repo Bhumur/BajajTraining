@@ -1,0 +1,8 @@
+package com.example.demo.ifaces;
+
+public interface Conditional {
+	
+	
+	
+	 boolean test();
+}

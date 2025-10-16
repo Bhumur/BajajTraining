@@ -1,0 +1,61 @@
+package com.example.demo.repository;
+
+import java.util.Collection;
+import java.util.Comparator;
+
+import com.example.demo.Product;
+import com.example.demo.Textile;
+import com.example.demo.exception.ElementsAlreadyExistException;
+import com.example.demo.exception.NotFoundException;
+
+public class TextileRepoImpl implements TextileRepositry {
+
+	@Override
+	public Collection<Product> getSortedList(Comparator<Product> comp) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean add(Product t) throws ElementsAlreadyExistException, NotFoundException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean update(Product a, Product t) throws NotFoundException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean remove(int id) throws NotFoundException {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public Product findById(int id) throws NotFoundException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Product> findByName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Product> findAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public Collection<Textile> findByFabric(String fabric) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

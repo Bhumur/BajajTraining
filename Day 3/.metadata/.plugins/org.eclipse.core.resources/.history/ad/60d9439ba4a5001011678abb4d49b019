@@ -1,0 +1,15 @@
+package com.exercise.automobiles;
+
+import com.exercise.iface.Automobile;
+
+public class ShowRoom {
+	Automobile vehicle;
+	
+	public MarutiCar getMarutiCar(String string, double d, String string2) {
+		return new MarutiCar();
+	}
+	
+	public PulsarBike getPulsarBike(String string, int i, String string2) {
+		return new PulsarBike();
+	}
+}

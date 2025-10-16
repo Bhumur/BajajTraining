@@ -1,0 +1,18 @@
+package com.exercise.demo;
+
+import com.exercise.automobiles.ShowRoom;
+import com.exercise.iface.Automobile;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		ShowRoom showRoom = new ShowRoom();
+		
+		Automobile auto1 =  showRoom.autoFactory(1,"Wagnor",100005.0,"2015");
+		
+		Automobile auto2 =  showRoom.autoFactory(2,"Pulser",15000.0,"2005");
+
+	}
+
+}

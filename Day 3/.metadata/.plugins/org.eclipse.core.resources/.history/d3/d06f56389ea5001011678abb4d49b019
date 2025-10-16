@@ -1,0 +1,24 @@
+package com.example.demo.ifaces;
+
+public class Application {
+
+	public static void main(String[] args) {
+		Function currencyConvertor = new UsdToInrConvertor();
+		
+		Function farenToCel = new FarenToCel();
+		
+		print(currencyConvertor, 100);
+		print(farenToCel, 100);
+		
+	}
+	
+	public static void print(Function func, double value) {
+		if(func instanceof UsdToInrConvertor) {
+			System.out.println("USD TO INR : " + func.apply(value));
+		}
+		else {
+			System.out.println("CEL To Faran" + func.apply(value));
+		}
+	}
+
+}

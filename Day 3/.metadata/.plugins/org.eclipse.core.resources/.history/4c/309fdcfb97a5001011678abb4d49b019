@@ -1,0 +1,20 @@
+package com.example.demo.abstraction;
+
+public abstract class Insurance {
+	private int policyNumber;
+	private String policyHolderName;
+	private double policyAmount;
+	
+	
+	
+	public Insurance(int policyNumber, String policyHolderName, double policyAmount) {
+		super();
+		this.policyNumber = policyNumber;
+		this.policyHolderName = policyHolderName;
+		this.policyAmount = policyAmount;
+	}
+
+
+
+	public abstract double calculatePremium();
+}

@@ -1,0 +1,39 @@
+package com.bank.service;
+
+import com.bank.entity.BankAccount;
+
+public class BankService {
+	BankAccount []accounts;
+	int size = 0;
+	
+	public BankService() {
+		this.accounts = new BankAccount[1];
+	}
+	
+	private void resize() {
+		BankAccount []resizedArray = new BankAccount[accounts.length * 2];
+		for(int i=0;i<this.size;i++) 
+			resizedArray[i] = accounts[i];
+		accounts = resizedArray;
+	}
+	
+	public boolean addAccount(BankAccount account) {
+		if(account==null)
+			return false;
+		if(this.size==this.accounts.length)
+			resize();
+		accounts[this.size] = account;
+		this.size++;
+		return true;
+	}
+	
+	public boolean addAllAccount(BankAccount []list) {
+		if(list==null)
+			return false;
+		for(BankAccount account : list) {
+			if(!addAccount(account))
+				return false;
+		}
+		return true;
+	}
+}

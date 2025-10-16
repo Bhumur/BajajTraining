@@ -1,0 +1,136 @@
+package com.example.demo.streams;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+import java.util.OptionalDouble;
+import java.util.function.Predicate;
+import java.util.stream.Collector;
+import java.util.stream.Stream;
+
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
+
+import java.util.Comparator;
+
+public class StreamApplication {
+	
+	
+	/*
+	 * Using Map
+	 * 
+	 */
+	
+	public static void countDonorByGroup(List<BloodDonor> list) {
+		// count then number of blood donor with grp b+
+		
+		
+		OptionalDouble avg = list.stream()
+			.mapToDouble((e) -> e.getDonerAge())
+			.average();
+		
+		if(avg.isPresent()){
+			System.out.println(avg.getAsDouble());
+		}
+	}
+	
+	public static void sortByDateDonated(List<BloodDonor> list) {
+		
+		List<BloodDonor> ans = list.stream()
+			.sorted((o1, o2) -> o1.getLastDonated().compareTo(o2.getLastDonated()))
+			.collect(toList());
+		
+		print(ans);
+	}
+	
+	public static void getDonorWithHighestAge(List<BloodDonor> list) {
+			Stream<Integer> max = 
+			Optional<Integer> ans = list.stream()
+				.map(e -> e.getDonerAge())
+				.max(Comparator.comparing(Integer::intValue));
+			
+			System.out.println(ans.get());
+	}
+	
+	public static void findDistinctGroup(List<BloodDonor> list) {
+			
+			List<String> ans = list.stream()
+				.map((e) -> e.getBloodGroup().toString())
+				.distinct()
+				.collect(toList());
+			
+			ans.forEach((e)->System.out.println(e));
+		}
+	public static void sortByGroupAndDateDoated(List<BloodDonor> list) {
+		
+		List<BloodDonor> ans = list.stream()
+				.sorted((o1, o2) -> {
+					if(o1.getBloodGroup().equals(o2.getBloodGroup())){
+						return o1.getLastDonated().compareTo(o2.getLastDonated());
+					}else {
+						return o1.getBloodGroup().compareTo(o2.getBloodGroup());
+					}
+				})
+				.collect(toList());
+			
+		List<BloodDonor> ansR = list.stream()
+				.sorted(Comparator.comparing(BloodDonor::getBloodGroup)
+						.thenComparing(BloodDonor::getLastDonated)
+						.reversed())
+				.collect(toList());
+		
+			print(ans);
+			System.out.println();
+			print(ansR);
+	}
+	
+	// Using Filter
+	
+	public static void filterByBloodGroup(Predicate<BloodDonor> conditionl, List<BloodDonor> list) {
+		List<BloodDonor> subList = list.stream().filter(conditionl).collect(toList());
+		print(subList);
+	}
+	
+	public static void filterByBloodGroup(BloodGroup grp, List<BloodDonor> list) {
+		List<BloodDonor> subList = list.stream().filter(e -> e.getBloodGroup().equals(grp)).collect(toList());
+		print(subList);
+	}
+	
+	public static void filterAndMap(BloodGroup grp, List<BloodDonor> list) {
+		Map<String, Long> mapName =  list.stream()
+		.filter(e -> e.getBloodGroup().equals(grp))
+		.collect(toMap((e) -> e.getDonerName(), BloodDonor::getMobileNumber));
+		
+//		System.out.println(mapName.get("Kholi"));
+		
+		mapName.entrySet().forEach((e)-> System.out.println(e.getKey() + " " + e.getValue()));
+	}
+	
+	public static void print(List<BloodDonor> list) {
+		for (BloodDonor bloodDonor : list) {
+			System.out.println(bloodDonor);
+		}
+	}
+	
+	public static void main(String []args) {
+		List<BloodDonor> donors = new BloodGroupRepoImpl().findAll();
+		
+		Predicate<BloodDonor> con1 = (e) -> e.getBloodGroup().toString().equals("ABNEG");
+//		filterByBloodGroup(con1, donors);
+//		filterByBloodGroup(BloodGroup.ABNEG, donors);
+		
+		
+//		filterAndMap(BloodGroup.ABNEG, donors);
+		
+		
+//		countDonorByGroup(donors);
+		
+//		findDistinctGroup(donors);
+//		sortByDateDonated(donors);
+//		sortByGroupAndDateDoated(donors);
+		getDonorWithHighestAge(donors);
+		
+		
+		
+	}
+}

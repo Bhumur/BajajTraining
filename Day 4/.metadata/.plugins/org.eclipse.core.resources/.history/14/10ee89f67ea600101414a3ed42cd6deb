@@ -1,0 +1,20 @@
+package com.example.demo.module.three;
+
+import com.example.demo.exception.ElementsAlreadyExistException;
+
+public class EmployeeService {
+	
+	private EmployeeRepoImpl repo;
+	
+	public EmployeeService() {
+		this.repo = new EmployeeRepoImpl();
+	}
+	
+	public boolean addEmployee(Employee emp) throws ElementsAlreadyExistException {
+		return repo.add(emp);
+	}
+	
+	public boolean removeEmployee(int id) {
+		return repo.remove(id);
+	}
+}

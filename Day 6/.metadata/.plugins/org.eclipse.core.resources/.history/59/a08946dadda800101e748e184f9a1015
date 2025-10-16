@@ -1,0 +1,15 @@
+package com.example.demo.streams;
+
+import java.time.LocalDate;
+
+public class BloodDoner {
+	
+	private int donorId;
+	private String donerName;
+	private int donerAge;
+	private LocalDate lastDonated;
+	private BloodGroup bloodGroup;
+	private long mobileNumber;
+	
+	
+}

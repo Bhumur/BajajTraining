@@ -1,0 +1,11 @@
+package com.example.demo;
+
+public record Student(int roll, String firstName) implements Comparable<Student> {
+
+	@Override
+	public int compareTo(Student o) {
+		// TODO Auto-generated method stub
+		return this.firstName.compareTo(o.firstName);
+	}
+	
+}

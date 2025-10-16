@@ -1,0 +1,42 @@
+package com.example;
+
+import java.util.Scanner;
+
+import com.example.demo.Insurance;
+import com.example.demo.LifeInsurance;
+import com.example.demo.VehicleInsurance;
+import com.example.demo.service.InsuranceService;
+
+public class InsuranceApplication {
+
+	
+	public static Insurance insuranceFactory(int key, Scanner scanner) {
+		Insurance insurance = null;
+		
+		int policyNumber = scanner.nextInt();
+		String policyHolderName = scanner.next();
+		double policyAmount = scanner.nextDouble();
+		switch(key) {
+		case 1:{
+			
+			insurance = new LifeInsurance();
+			break;
+		}
+		case 2:{
+			insurance = new VehicleInsurance();
+			break;
+		}
+		default:
+			break;
+		}
+		return insurance;
+	}
+	
+	public static void main(String []args) {
+		
+		InsuranceService service = new InsuranceService();
+		
+		service.findPremium(insuranceFactory(1));
+		service.findPremium(insuranceFactory(2));
+	}
+}

@@ -1,0 +1,12 @@
+package com.example.demo.ifaces;
+
+import java.util.Collection;
+import java.util.Comparator;
+
+public interface EmployeeRepository<Employee> extends CrudRepositry<Employee> {
+
+	Collection<Employee> sortedList(Comparator<Employee> comp);
+	Collection<Employee> findByEmployeeName(String name) ;
+	Collection<com.example.demo.module.three.Employee> sortedListByNaturalOrder();
+	
+}

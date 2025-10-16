@@ -1,0 +1,53 @@
+package com.example.demo;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
+public class ExceptionHandleWithLambda {
+
+	public void handleException() {
+//		List<Integer> listMarks = Arrays.asList(49,56,24,89,0);
+		List<Integer> listMarks = List.of(49,56,24,89,0);
+		
+//		listMarks.add(86); // B/C it is unmodifiable list
+		
+		Function<Integer, Integer> divisionWithTry = (number) -> {
+			int result = 0;
+			try {
+				result = 420/number;
+			} catch (Exception e) {
+				System.err.println("Deno is 0");
+			}
+			return result;
+		};
+//		listMarks.forEach(e -> divisionWithTry.apply(e));
+		
+		
+		// Try by Consumer
+		listMarks.forEach(wrapper(e -> System.out.println(420/e)));
+		
+		
+		Function<String, Integer> parser = (argOne) -> {
+			
+		};
+		
+	}
+	
+	public static Consumer<Integer> wrapper(Consumer<Integer> consumer){
+		return (arg) -> {
+			try {
+				consumer.accept(arg);
+			} catch(ArithmeticException e) {
+				System.err.println(e.getMessage());
+			}
+		};
+	}
+	
+	public static void main(String []args) {
+		ExceptionHandleWithLambda obj = new ExceptionHandleWithLambda();
+		
+		obj.handleException();
+	}
+}

@@ -1,0 +1,27 @@
+package com.example.demo;
+
+import java.util.function.Function;
+import java.util.function.IntPredicate;
+
+public class Application {
+
+	public static void main(String []args) {
+		System.out.println("Hello Java 8");
+		
+		EffectiveFinal obj = new EffectiveFinal();
+		
+		obj.learnEffectiveFinal();
+		
+		
+		IntPredicate primitiveVersion = (number) -> number % 2 == 0;
+		
+		System.out.println("Is Even -> " + primitiveVersion.test(232));
+		
+		Function<String , String> firstThree = (arg) -> arg.substring(0,5);
+		Function<String , String> lastThree = (arg) -> arg.substring(arg.length()-2,arg.length());
+		
+		System.out.println(firstThree.andThen(lastThree).apply("MYNAME"));
+		
+		System.out.println(firstThree.andThen(lastThree).apply("MYNAME"));
+	}
+}

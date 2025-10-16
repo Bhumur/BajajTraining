@@ -1,0 +1,5 @@
+package com.example.demo;
+
+public record Student(int roll, String firstName) implements Comparable<Student> {
+
+}

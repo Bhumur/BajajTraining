@@ -1,0 +1,28 @@
+package com.exercise.demo;
+
+import com.exercise.automobiles.ShowRoom;
+import com.exercise.iface.Automobile;
+
+public class Application {
+
+	public static void main(String[] args) {
+
+		ShowRoom showRoom = new ShowRoom();
+		
+		Automobile auto1 =  showRoom.autoFactory(1,"Wagnor",100005.0,"2015");
+		
+		Automobile auto2 =  showRoom.autoFactory(2,"Pulser",15000.0,"2005");
+		
+		Automobile auto3 =  showRoom.autoFactory(3,"Tractor",15025.0,"2025");
+		
+		Automobile auto4 =  showRoom.autoFactory(4,"Electric",15025.0,"2025");
+		
+		Automobile auto5 =  showRoom.autoFactory(5,"truck",15025.0,"2025");
+		
+		System.out.println(showRoom.printQutation(auto1) + auto1.getColor() + auto1.getModel() + auto1.getPrice());
+		System.out.println(showRoom.printQutation(auto1) + auto2.getColor() + auto2.getModel() + auto2.getPrice());
+		System.out.println(showRoom.printQutation(auto3));
+
+	}
+
+}

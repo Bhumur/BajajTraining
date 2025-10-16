@@ -1,0 +1,14 @@
+package com.example.demo.entity;
+
+import java.time.LocalDate;
+
+import com.example.demo.entity.utils.Status;
+
+public class Customer {
+	
+	private int customerId;
+	private String customerName;
+	private LocalDate billDate;
+	private double amountDue;
+	private Status paymentStatus;
+}

@@ -1,0 +1,7 @@
+package traninig;
+
+public class StudentService {
+	public String assignGrade() {
+		return "A";
+	}
+}

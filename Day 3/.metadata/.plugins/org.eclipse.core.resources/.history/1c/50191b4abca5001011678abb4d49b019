@@ -1,0 +1,10 @@
+package com.example.demo;
+
+import com.example.demo.model.Book;
+
+public interface Repository {
+	public boolean save(Book book);
+	public Book[] findAll();
+	public boolean remove(Book book);
+	public Book findById(int bookNumber);
+}
