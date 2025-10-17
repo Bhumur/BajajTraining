@@ -1,0 +1,71 @@
+# === Eclipse / STS / IntelliJ metadata ===
+.metadata/
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.loadpath
+.recommenders
+*.launch
+.settings/
+.classpath
+.project
+
+# === Build directories ===
+target/
+build/
+out/
+.gradle/
+!gradle/wrapper/gradle-wrapper.jar
+
+# === Maven ===
+.mvn/
+!/.mvn/wrapper/maven-wrapper.jar
+log/
+logs/
+*.log
+
+# === IDE-specific ===
+# IntelliJ IDEA
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VS Code
+.vscode/
+
+# === OS-specific ===
+.DS_Store
+Thumbs.db
+
+# === Environment / Configuration ===
+.env
+*.properties.local
+*.secret
+*.env
+
+# === Java / Spring Boot ===
+*.class
+*.war
+*.jar
+*.ear
+hs_err_pid*
+
+# === Node (if using React frontend) ===
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+dist/
+build/
+
+# === Backup / Misc ===
+*.orig
+*.rej
+*.swo
+*.swp
+*.bak
