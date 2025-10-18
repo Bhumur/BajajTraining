@@ -47,7 +47,7 @@ public class Trainer extends User {
 	}
 	@Override
 	public String toString() {
-		return "Trainer [experience=" + experience + ", members=" + members + "]";
+		return super.toString() + " Trainer [experience=" + experience + ", members=" + members + "]";
 	}
 	
 	

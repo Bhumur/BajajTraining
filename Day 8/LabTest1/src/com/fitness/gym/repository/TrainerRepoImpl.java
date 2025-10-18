@@ -75,6 +75,7 @@ public class TrainerRepoImpl implements TrainerRepository<Trainer> {
 				for(Member m : listMember) {
 					m.setTrainer(trainer);
 				}
+				list.add(trainer);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

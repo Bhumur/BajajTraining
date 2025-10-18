@@ -5,8 +5,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 import com.fitness.gym.entity.Member;
 import com.fitness.gym.entity.Trainer;
@@ -14,6 +17,9 @@ import com.fitness.gym.entity.User;
 import com.fitness.gym.entity.WorkoutRecords;
 import com.fitness.gym.exceptions.DuplicateIdException;
 import com.fitness.gym.exceptions.MemberNotFoundException;
+import com.fitness.gym.model.Exercies;
+import com.fitness.gym.model.Food;
+import com.fitness.gym.model.Unit;
 import com.fitness.gym.model.Workout;
 import com.fitness.gym.service.TrainerServiceImpl;
 
@@ -55,23 +61,15 @@ public class MemberRepoImpl implements MemberRepositry<Member> {
 
 	@Override
 	public Member getByEmail(String emailOfMember) {
+		List<Member> list = new ArrayList<>();
 		String selectById = "select * from member where memberemail = ?";
 		Member member = null;
 		try {
 			PreparedStatement ps = con.prepareStatement(selectById);
 			ps.setString(1, emailOfMember);
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
-				int memberid = rs.getInt(1);
-				String name = rs.getString(2);
-				String email =	rs.getString(3);
-				String password = rs.getString(4);
-				double weight = rs.getDouble(5);
-				double height = rs.getDouble(6);
-				int trainerid = rs.getInt(7);
-				Trainer trainer = trainerService.getTrainerByTrainerId(trainerid);
-				member = new Member(memberid, name, email, password, weight, height, trainer, null, null, null);
-			}
+			getMemberListByPreparedStatement(list, ps);
+			member = list.get(0);
+			
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -145,32 +143,30 @@ public class MemberRepoImpl implements MemberRepositry<Member> {
 	
 	@Override
 	public Member getById(int id) {
+		List<Member> list = new ArrayList<>();
 		String selectById = "select * from member where memberid = ?";
 		Member member = null;
 		try {
 			PreparedStatement ps = con.prepareStatement(selectById);
 			ps.setInt(1, id);
-			ResultSet rs = ps.executeQuery();
-			if(rs.next()) {
-				int memberid = rs.getInt(1);
-				String name = rs.getString(2);
-				String email =	rs.getString(3);
-				String password = rs.getString(4);
-				double weight = rs.getDouble(5);
-				double height = rs.getDouble(6);
-				int trainerid = rs.getInt(7);
-				Trainer trainer = trainerService.getTrainerByTrainerId(trainerid);
-				member = new Member(memberid, name, email, password, weight, height, trainer, null, null, null);
-			}
+			getMemberListByPreparedStatement(list, ps);
+			member = list.get(0);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return member;
 	}
 
+	
 	@Override
 	public boolean addAll(List<Member> list) {
-		// TODO Auto-generated method stub
+		for(Member m : list) {
+			try {
+				add(m);
+			} catch (DuplicateIdException e) {
+				e.printStackTrace();
+			}
+		}
 		return false;
 	}
 	
@@ -179,19 +175,7 @@ public class MemberRepoImpl implements MemberRepositry<Member> {
 		String selectById = "select * from member";
 		try {
 			PreparedStatement ps = con.prepareStatement(selectById);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				int memberid = rs.getInt(1);
-				String name = rs.getString(2);
-				String email =	rs.getString(3);
-				String password = rs.getString(4);
-				double weight = rs.getDouble(5);
-				double height = rs.getDouble(6);
-				int trainerid = rs.getInt(7);
-				Trainer trainer = trainerService.getTrainerByTrainerId(trainerid);
-				Member member = new Member(memberid, name, email, password, weight, height, trainer, null, null, null);
-				list.add(member);
-			}
+			getMemberListByPreparedStatement(list, ps);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
@@ -204,9 +188,30 @@ public class MemberRepoImpl implements MemberRepositry<Member> {
 	}
 
 	@Override
-	public Map<Workout, List<WorkoutRecords>> getWorkoutTracking(int id) {
-		// TODO Auto-generated method stub
-		return null;
+	public Map<Workout, List<WorkoutRecords>> getWorkoutTracking(int memberid) {
+		List<WorkoutRecords> list = new ArrayList<>();
+		Map<Workout, List<WorkoutRecords>> ans = null;
+		String selectById = "select * from workoutrecord where memberid = ?";
+		try {
+			PreparedStatement ps = con.prepareStatement(selectById);
+			ps.setInt(1, memberid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				int workoutrecordid = rs.getInt(1);
+				Workout workout = Workout.valueOf(rs.getString(2));
+				double highest = rs.getDouble(3);
+				double average = rs.getDouble(4);
+				Unit unit = Unit.valueOf(rs.getString(5));
+				int calorieburn = rs.getInt(6);
+				WorkoutRecords w = new WorkoutRecords(workoutrecordid, workout, highest, average, unit, calorieburn, memberid);
+				list.add(w);
+			}
+			ans = list.stream()
+					.collect(Collectors.groupingBy(WorkoutRecords::getWorkout));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return ans;
 	}
 
 	@Override
@@ -216,23 +221,67 @@ public class MemberRepoImpl implements MemberRepositry<Member> {
 		try {
 			PreparedStatement ps = con.prepareStatement(selectById);
 			ps.setInt(1, trainerId);
-			ResultSet rs = ps.executeQuery();
-			while(rs.next()) {
-				int memberid = rs.getInt(1);
-				String name = rs.getString(2);
-				String email =	rs.getString(3);
-				String password = rs.getString(4);
-				double weight = rs.getDouble(5);
-				double height = rs.getDouble(6);
-				int trainerid = rs.getInt(7);
-				Trainer trainer = trainerService.getTrainerByTrainerId(trainerid);
-				Member member = new Member(memberid, name, email, password, weight, height, trainer, null, null, null);
-				list.add(member);
-			}
+			getMemberListByPreparedStatement(list, ps);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	private void getMemberListByPreparedStatement(List<Member> list, PreparedStatement ps) throws SQLException {
+		ResultSet rs = ps.executeQuery();
+		while(rs.next()) {
+			int memberid = rs.getInt(1);
+			String name = rs.getString(2);
+			String email =	rs.getString(3);
+			String password = rs.getString(4);
+			double weight = rs.getDouble(5);
+			double height = rs.getDouble(6);
+			int trainerid = rs.getInt(7);
+			Trainer trainer = trainerService.getTrainerByTrainerId(trainerid);
+			Member member = new Member(memberid, name, email, password, weight, height, trainer, null, null, null);
+			Map<Workout, List<WorkoutRecords>> map = getWorkoutTracking(memberid);
+			Set<Exercies> exercises = getExercise(memberid);
+			Set<Food> food = getFood(memberid);
+			member.setWorkoutTracking(map);
+			member.setExercises(exercises);
+			member.setFood(food);
+			list.add(member);
+		}
+	}
+
+	private Set<Food> getFood(int memberid) {
+		String selectSql = "select * from food where memberid = ?";
+		Set<Food> foods = new HashSet<>();
+		try {
+			PreparedStatement ps = con.prepareStatement(selectSql);
+			ps.setInt(1, memberid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Food food = Food.valueOf(rs.getString(2));
+				foods.add(food);
+			}
+		}catch(SQLException e) {
+				e.printStackTrace();
+		}
+		return foods;
+	}
+
+	private Set<Exercies> getExercise(int memberid) {
+		String selectSql = "select * from exercise where memberid = ?";
+		Set<Exercies> set = new HashSet<>();
+		try {
+			PreparedStatement ps = con.prepareStatement(selectSql);
+			ps.setInt(1, memberid);
+			ResultSet rs = ps.executeQuery();
+			while(rs.next()) {
+				Exercies ex = Exercies.valueOf(rs.getString(2));
+				set.add(ex);
+			}
+		}catch(SQLException e) {
+				e.printStackTrace();
+		}
+		return set;
 	}
 	
 
