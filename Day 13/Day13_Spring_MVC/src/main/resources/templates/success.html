@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Customer Added</title>
+<link href="logo.png" type="image/png" rel="icon">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f6fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .card {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #273c75;
+        margin-bottom: 20px;
+    }
+
+    p {
+        font-size: 16px;
+        margin: 10px 0;
+        color: #2f3640;
+    }
+
+    strong {
+        color: #e84118;
+    }
+
+    .back-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        text-decoration: none;
+        color: #40739e;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        color: #2f3640;
+    }
+</style>
+</head>
+<body>
+<div class="card">
+    <h2>Customer Added Successfully!</h2>
+
+    <p><strong>Customer ID:</strong> <span th:text="${customer.customerId}"></span></p>
+    <p><strong>Name:</strong> <span th:text="${customer.customerName}"></span></p>
+    <p><strong>Mobile:</strong> <span th:text="${customer.mobileNumber}"></span></p>
+    <p><strong>Email:</strong> <span th:text="${customer.email}"></span></p>
+    <p><strong>Type:</strong> <span th:text="${customer.customerType}"></span></p>
+
+    <a th:href="@{/allCustomer}" class="back-link">View All Customers</a>
+</div>
+</body>
+</html>

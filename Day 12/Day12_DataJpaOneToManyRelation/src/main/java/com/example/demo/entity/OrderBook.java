@@ -22,7 +22,7 @@ public class OrderBook {
 	@Column(name = "order_book_id")
 	private int orderBookId;
 	
-	@OneToMany(targetEntity = MyOrder.class, fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToMany(targetEntity = MyOrder.class, fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "order_ref", referencedColumnName = "order_book_id")
 	private List<MyOrder> orders;
 

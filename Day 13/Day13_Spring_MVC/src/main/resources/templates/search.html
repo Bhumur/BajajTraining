@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Customer Search</title>
+<link href="logo.png" type="image/png" rel="icon">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f6fa;
+        margin: 0;
+        padding: 20px;
+    }
+
+    .card {
+        width: 400px;
+        margin: 50px auto;
+        padding: 20px 30px;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #2f3640;
+        margin-bottom: 20px;
+    }
+
+    input[type="search"] {
+        width: 80%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-bottom: 15px;
+        font-size: 16px;
+    }
+
+    button {
+        padding: 8px 20px;
+        background-color: #40739e;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background-color: #2f3640;
+    }
+
+    .back-link {
+        display: block;
+        margin-top: 20px;
+        color: #40739e;
+        text-decoration: none;
+        font-weight: bold;
+    }
+
+    .back-link:hover {
+        color: #2f3640;
+    }
+</style>
+</head>
+<body>
+
+<div class="card">
+    <h2>Search Customer</h2>
+    
+    <p th:if="${session.currentUser != null}">
+    Logged in as: <span th:text="${session.currentUser}"></span>
+	</p>
+    <form th:action="@{/search}" method="post">
+        <input id="id" type="search" name="searchString" placeholder="Enter Customer Name or ID" th:value="${searchString}"/>
+        <br>
+        <p th:if="${errorMessage}" th:text="${errorMessage}" style="color:red;"></p>
+        
+        <button type="submit">Search</button>
+    </form>
+    <a class="back-link" th:href="@{/allCustomer}">Back to All Customers</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Add Customer</title>
+<link href="logo.png" type="image/png" rel="icon">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f6fa;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    form {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        width: 400px;
+    }
+
+    h2 {
+        text-align: center;
+        color: #273c75;
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-top: 15px;
+        font-weight: bold;
+        color: #2f3640;
+    }
+
+    input[type="text"], select {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 6px;
+        border: 1px solid #dcdde1;
+        box-sizing: border-box;
+    }
+
+    input[type="submit"] {
+        width: 100%;
+        margin-top: 20px;
+        padding: 12px;
+        background-color: #e84118;
+        color: #fff;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    input[type="submit"]:hover {
+        background-color: #c23616;
+    }
+</style>
+</head>
+<body>
+
+<form th:action="@{/customer}" th:object="${customer}" method="post">
+    <h2>Add Customer</h2>
+
+    <label>Customer ID :</label>
+    <input type="text" th:field="*{customerId}" placeholder="Enter Customer ID"/>
+
+    <label>Customer Name :</label>
+    <input type="text" th:field="*{customerName}" placeholder="Enter Customer Name"/>
+
+    <label>Customer Mobile Number :</label>
+    <input type="text" th:field="*{mobileNumber}" placeholder="Enter Mobile Number"/>
+
+    <label>Customer Email :</label>
+    <input type="text" th:field="*{email}" placeholder="Enter Email"/>
+
+    <label>Customer Type :</label>
+    <select th:field="*{customerType}">
+        <option value="">-- Select Type --</option>
+        <option th:each="eachType : ${type}" th:value="${eachType}" th:text="${eachType}"></option>
+    </select>
+
+    <input type="submit" value="Add Customer"/>
+</form>
+
+</body>
+</html>

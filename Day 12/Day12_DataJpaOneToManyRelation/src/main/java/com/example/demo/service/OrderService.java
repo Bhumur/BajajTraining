@@ -5,10 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.example.demo.entity.MyOrder;
 import com.example.demo.entity.OrderBook;
 import com.example.demo.ifaces.OrderRepo;
+
 
 @Service
 public class OrderService {
@@ -30,9 +32,11 @@ public class OrderService {
 		
 		return true;
 	}
-	
+	@Transactional(readOnly = true)
 	public List<OrderBook> get() {
-		return this.repo.findAll();
+		List<OrderBook> x = this.repo.findAll();
+//		x.stream().forEach(e->e.getOrders().size());
+		return x;
 	}
 }
 

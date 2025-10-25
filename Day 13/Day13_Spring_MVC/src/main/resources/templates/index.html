@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Abhi CRM</title>
+<link href="logo.png" type="image/png" rel="icon">
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f6fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        color: #2f3640;
+    }
+
+    h1 {
+        font-size: 3rem;
+        margin-bottom: 2rem;
+        color: #273c75;
+        text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    a.button {
+        display: inline-block;
+        padding: 12px 30px;
+        margin: 10px;
+        font-size: 1.2rem;
+        text-decoration: none;
+        color: #fff;
+        background: #e84118;
+        border-radius: 8px;
+        transition: 0.3s;
+        box-shadow: 2px 4px 6px rgba(0,0,0,0.2);
+    }
+
+    a.button:hover {
+        background: #c23616;
+        transform: translateY(-2px);
+    }
+</style>
+</head>
+<body>
+    <h1 th:text="${heading}"></h1>
+    <p th:if="${session.currentUser != null}">
+    Logged in as: <span th:text="${session.currentUser}"></span>
+	</p>
+    <a th:href="@{/customer}" class="button">Add Customer</a>
+    <a th:href="@{/allCustomer}" class="button" style="background:#00a8ff;">View All Customers</a>
+</body>
+</html>
