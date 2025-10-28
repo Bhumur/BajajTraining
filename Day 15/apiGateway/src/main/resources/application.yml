@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: apiGateway
+
+  cloud:
+    gateway:
+      server:
+        webflux:
+          discovery:
+            locator:
+              enabled: true
+          routes:
+            - id: bookService
+              uri: lb://BOOKSERVICE
+              predicates:
+                - Path=/api/v1/books/**
+            - id: reviewService
+              uri: lb://REVIEWSERVICE
+              predicates:
+                - Path=/api/v1/reviews/**
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  endpoint:
+    # This was renamed and type changed in new versions
+    gateway:
+      access: unrestricted   # ✅ replaces "enabled: true"
