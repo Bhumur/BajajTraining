@@ -1,5 +1,5 @@
 server:
-  port: 5050
+  port: ${port:0}
 
 spring:
   application:
@@ -7,6 +7,10 @@ spring:
 
   config:
     import: "configserver:http://localhost:8888"
+
+eureka:
+  instance:
+    instance-id: ${spring.application.name}:${spring.application.instance_id:${random.value}}
 
 management:
   endpoints:

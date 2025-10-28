@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
+import org.springframework.web.reactive.function.client.WebClient.ResponseSpec;
 
 import com.example.demo.dtos.BookDto;
 
@@ -29,6 +30,9 @@ public class FetchBookDetails {
 	@GetMapping("/{bookId}")
 	public Mono<BookDto> fetchByBookId(@PathVariable int bookId){
 		System.out.println("bookId");
-		return this.client.get().uri("lb://BOOKSERVICE/api/v1/books/{bookId}",bookId).retrieve().bodyToMono(BookDto.class);
+		ResponseSpec spec = this.client.get().uri("lb://BOOKSERVICE/api/v1/books/{bookId}",bookId).retrieve();
+		Mono<BookDto> result = spec.bodyToMono(BookDto.class);
+//		System.out.println(spec.getPort());
+		return result;
 	}
 }

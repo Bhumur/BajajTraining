@@ -1,11 +1,9 @@
 spring:
   application:
-    name: reviewService
-  config:
-    import: "configserver:http://localhost:8888"
+    name: catalogService
 
 server:
-  port: 5070
+  port: 7070
 
 management:
   endpoints:

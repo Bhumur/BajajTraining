@@ -3,12 +3,15 @@ package com.example.demo.controllers;
 import java.net.URI;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.example.demo.dtos.BookDto;
 import com.example.demo.service.BookService;
+import com.example.demo.utils.ServerPortService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -19,6 +22,12 @@ import jakarta.validation.Valid;
 public class BookController {
 
     private final BookService service;
+    
+    @Autowired
+    private ServerPortService serverService;
+    
+    @Value("${server.port}")
+    private String port;
 
     public BookController(BookService service) {
         this.service = service;
@@ -43,6 +52,7 @@ public class BookController {
         parameters = @Parameter(required = true, example = "1")
     )
     public BookDto findById(@PathVariable int id) {
+    	System.out.println("+++++++++++++++++++++++++++++++++" + serverService.getPort());
         return this.service.findById(id);
     }
 
