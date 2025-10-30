@@ -1,6 +1,5 @@
 package com.example.demo.config;
 
-import com.example.demo.ApiGatewayApplication;
 import org.springframework.cloud.gateway.route.RouteLocator;
 import org.springframework.cloud.gateway.route.builder.RouteLocatorBuilder;
 import org.springframework.context.annotation.Bean;
