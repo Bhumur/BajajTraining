@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: usingCircuitBreaker
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+server:
+  port: 8020
