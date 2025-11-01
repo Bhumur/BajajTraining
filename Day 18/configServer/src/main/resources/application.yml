@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: configServer
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Bhumur/BajajTraining.git
+
+server:
+  port: 8888
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  info:
+    java:
+      enabled: true
+    env:
+      enabled: true
+
+info:
+  app: ${spring.application.name}
+  build:
+    artifactId: '@project.artifactId@'
+    groupId: '@project.groupId@'
+    version: '@project.version@'
+  java:
+    version: '@java.version@'

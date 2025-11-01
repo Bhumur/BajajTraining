@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: notificationService
+
+  cloud:
+    stream:
+      bindings:
+        consumer-in-0:
+          destination: confirm-order-topic
+        
+server:
+  port: 8015

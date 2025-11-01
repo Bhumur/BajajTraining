@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: orderServiceUsingKafka
+server:
+  port: 8012

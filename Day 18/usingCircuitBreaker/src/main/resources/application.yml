@@ -1,0 +1,33 @@
+spring:
+  application:
+    name: usingCircuitBreaker
+  cloud:
+    compatibility-verifier:
+      enabled: false
+
+server:
+  port: 8020
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+    circuitbreakers:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      sample:
+        registerHealthIndicator: true
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        failureRateThreshold: 50
+        minimumNumberOfCalls: 2
+        permittedNumberOfCallsInHalfOpenState: 2
+        slidingWindowSize: 3
+        waitDurationInOpenState: 5s
+        slidingWindowType: COUNT_BASED
