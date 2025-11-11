@@ -17,8 +17,8 @@ spring:
     # as long as the application runs.
     url: jdbc:h2:mem:testdb
     # 3. Standard H2 credentials (often not required, but good practice)
-    username: sa
-    password: password
+    username: root
+    password: root
 
   # H2 Console is a useful web interface for viewing the database structure.
   h2:
