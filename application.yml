@@ -10,30 +10,13 @@
 #     show-sql: true
 spring:
   datasource:
-    # 1. H2 Driver
     driverClassName: org.h2.Driver
-    # 2. H2 URL for an in-memory database
-    # 'mem:testdb' means the database is created in memory and is available 
-    # as long as the application runs.
-    url: jdbc:h2:mem:testdb
-    # 3. Standard H2 credentials (often not required, but good practice)
-    username: root
-    password: root
+    # File-Based URL for persistence
+    url: jdbc:h2:file:./data/mydb
+    username: sa
+    password: password
 
-  # H2 Console is a useful web interface for viewing the database structure.
-  h2:
-    console:
-      # Enable the H2 console
-      enabled: true
-      # Set the path to access the console (e.g., http://localhost:8080/h2-console)
-      path: /h2-console
-
+  # CRITICAL: Prevent JPA from interfering
   jpa:
     hibernate:
-      # 'create-drop' is common for H2: it creates tables on startup and drops them on shutdown.
-      ddl-auto: create-drop
-    show-sql: true
-    properties:
-      hibernate:
-        # Set the dialect to help Hibernate generate correct H2 SQL.
-        dialect: org.hibernate.dialect.H2Dialect
+      ddl-auto: none
